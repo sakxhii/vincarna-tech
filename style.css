@@ -3917,3 +3917,22 @@ select {
   }
 }
 
+
+/* Added extra bottom spacing to Features section per user request */
+.features-section {
+    padding-bottom: 120px !important;
+}
+
+
+/* Added extra top spacing to Features section per user request */
+.features-section {
+    padding-top: 80px !important;
+}
+
+
+/* Added extra vertical spacing to How It Works section per user request */
+.process-section {
+    padding-top: 80px !important;
+    padding-bottom: 80px !important;
+}
+
