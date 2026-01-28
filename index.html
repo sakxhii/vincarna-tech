@@ -223,7 +223,7 @@
           <header class="demo-header">
             <div class="demo-logo">
               <div class="demo-logo-icon">◈</div>
-              App Name
+              Vincarna Tech
             </div>
             <div class="demo-nav">
               <div class="demo-nav-item active">
@@ -287,22 +287,28 @@
                 </thead>
                 <tbody id="tableBody">
                   <tr>
-                    <td><span class="file-icon">📄</span>invoice_2023_001.pdf (1.2 MB)</td>
-                    <td>11/7/25 16:25</td>
-                    <td><span class="status-badge status-extracted">✓ Extracted</span></td>
-                    <td><span class="status-badge status-validated">✓ Validated</span></td>
-                    <td>RELIANCE INDUSTRIES PVT LTD</td>
-                    <td>RL/6953</td>
-                    <td><span class="invoice-number"><span class="checkmark">✓</span> 24552</span></td>
+                    <td data-label="Uploaded Files"><span class="file-icon">📄</span>invoice_2023_001.pdf (1.2 MB)</td>
+                    <td data-label="Date/Time">11/7/25 16:25</td>
+                    <td data-label="Extraction Status"><span class="status-badge status-extracted">✓ Extracted</span>
+                    </td>
+                    <td data-label="Validation Status"><span class="status-badge status-validated">✓ Validated</span>
+                    </td>
+                    <td data-label="Supplier Name">RELIANCE INDUSTRIES PVT LTD</td>
+                    <td data-label="Invoice #">RL/6953</td>
+                    <td data-label="Invoice header"><span class="invoice-number"><span class="checkmark">✓</span>
+                        24552</span></td>
                   </tr>
                   <tr>
-                    <td><span class="file-icon">📄</span>invoice_2023_002.pdf (1.2 MB)</td>
-                    <td>11/7/25 16:28</td>
-                    <td><span class="status-badge status-extracted">✓ Extracted</span></td>
-                    <td><span class="status-badge status-validated">✓ Validated</span></td>
-                    <td>VOLVO CONSTRUCTION</td>
-                    <td>IV23154</td>
-                    <td><button class="btn btn-correct" onclick="openModal()"><span>Correct Errors</span></button></td>
+                    <td data-label="Uploaded Files"><span class="file-icon">📄</span>invoice_2023_002.pdf (1.2 MB)</td>
+                    <td data-label="Date/Time">11/7/25 16:28</td>
+                    <td data-label="Extraction Status"><span class="status-badge status-extracted">✓ Extracted</span>
+                    </td>
+                    <td data-label="Validation Status"><span class="status-badge status-validated">✓ Validated</span>
+                    </td>
+                    <td data-label="Supplier Name">VOLVO CONSTRUCTION</td>
+                    <td data-label="Invoice #">IV23154</td>
+                    <td data-label="Invoice header"><button class="btn btn-correct" onclick="openModal()"><span>Correct
+                          Errors</span></button></td>
                   </tr>
                 </tbody>
               </table>
@@ -766,13 +772,13 @@
 
       const newRow = document.createElement('tr');
       newRow.innerHTML = `
-            <td><span class="file-icon">📄</span>invoice_2023_new.pdf (1.2 MB)</td>
-            <td>${new Date().toLocaleString('en-US', { year: '2-digit', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', hour12: false })}</td>
-            <td><span class="status-badge status-pending">● Pending</span></td>
-            <td><span class="status-badge status-pending">● Pending</span></td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
+            <td data-label="Uploaded Files"><span class="file-icon">📄</span>invoice_2023_new.pdf (1.2 MB)</td>
+            <td data-label="Date/Time">${new Date().toLocaleString('en-US', { year: '2-digit', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', hour12: false })}</td>
+            <td data-label="Extraction Status"><span class="status-badge status-pending">● Pending</span></td>
+            <td data-label="Validation Status"><span class="status-badge status-pending">● Pending</span></td>
+            <td data-label="Supplier Name">-</td>
+            <td data-label="Invoice #">-</td>
+            <td data-label="Invoice header">-</td>
         `;
       newRow.style.opacity = '0';
       newRow.style.transform = 'translateY(-20px)';
@@ -976,13 +982,25 @@
     // Initialize
     window.addEventListener('load', () => {
       createParticles();
-      setTimeout(() => {
-        runDemo();
-      }, 2000);
+
+      // Only start demo when the section is visible
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !demoRunning) {
+            // visible, start demo
+            setTimeout(() => runDemo(), 500);
+            observer.disconnect(); // Only run once automatically? Or keep running?
+            // Let's disconnect so it doesn't restart weirdly if scrolling up/down fast
+            // The runDemo has a loop (setTimeout) anyway.
+          }
+        });
+      }, { threshold: 0.5 });
+
+      const operatorSection = document.querySelector('.operator-section');
+      if (operatorSection) observer.observe(operatorSection);
     });
 
   </script>
 </body>
 
 </html>
-```
