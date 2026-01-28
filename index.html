@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vincarna Tech | Document Intelligence & AI Solutions</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <nav id="navbar">
+    <div class="container nav-inner">
+      <a href="#" class="logo">
+        <div class="logo-icon">V</div>
+        <div>Vincarna<span>Tech</span></div>
+      </a>
+
+      <button class="mobile-menu-btn" id="mobileMenuBtn">
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#solutions">Solutions</a></li>
+        <li><a href="#systems">Document Systems</a></li>
+        <li><a href="#operator">Operator Interface</a></li>
+        <li><a href="#process">How It Works</a></li>
+        <li><a href="#contact" class="nav-cta">Get Started</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1>Enterprise Document Intelligence & AI Automation</h1>
+          <p>Vincarna Tech delivers intelligent AI automation for document ingestion, classification, recognition and
+            review — fully integrated with enterprise systems.</p>
+          <p>Transform your document workflows with intelligent automation that learns, adapts, and scales with your
+            business.</p>
+          <div class="hero-buttons">
+            <a href="#contact" class="btn btn-primary">Request a Demo</a>
+            <a href="#operator" class="btn btn-outline">See Operator Interface</a>
+          </div>
+        </div>
+        <div class="hero-video">
+          <video autoplay muted loop playsinline>
+            <source src="Invoice_Digitization_and_ERP_Integration_Workflow.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <section class="trust-bar">
+    <div class="container" style="max-width: 100%; padding: 0;">
+      <div class="trust-title">TRUSTED BY INDUSTRY LEADERS</div>
+      <div class="trust-wrapper">
+        <div class="trust-track">
+          <!-- Original Logos -->
+          <div class="trust-logo">GMM<br><small>Pfadler</small></div>
+          <div class="trust-logo">SEFAR</div>
+          <div class="trust-logo">AllergoSan</div>
+          <div class="trust-logo">Institut<br>AllergoSan</div>
+          <div class="trust-logo">FellowPro</div>
+          <div class="trust-logo">INFOR</div>
+
+          <!-- Duplicated for Loop (must match exactly) -->
+          <div class="trust-logo">GMM<br><small>Pfadler</small></div>
+          <div class="trust-logo">SEFAR</div>
+          <div class="trust-logo">AllergoSan</div>
+          <div class="trust-logo">Institut<br>AllergoSan</div>
+          <div class="trust-logo">FellowPro</div>
+          <div class="trust-logo">INFOR</div>
+
+          <!-- Triple Duplicate for seamless wide screens -->
+          <div class="trust-logo">GMM<br><small>Pfadler</small></div>
+          <div class="trust-logo">SEFAR</div>
+          <div class="trust-logo">AllergoSan</div>
+          <div class="trust-logo">Institut<br>AllergoSan</div>
+          <div class="trust-logo">FellowPro</div>
+          <div class="trust-logo">INFOR</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOLUTIONS -->
+  <section id="solutions" class="solutions-section">
+    <div class="container">
+      <div class="section-head">
+        <h2>Industry-Specific Solutions</h2>
+        <p>Tailored AI solutions for your business needs</p>
+      </div>
+      <div class="solutions-grid">
+        <div class="solution-card">
+          <div class="solution-header">
+            <i class="fas fa-university solution-icon"></i>
+          </div>
+          <div class="solution-content">
+            <h3>Banking & Finance</h3>
+            <p>Automate financial processes, risk assessment, compliance reporting, and customer insights with
+              AI-powered precision.</p>
+          </div>
+        </div>
+        <div class="solution-card">
+          <div class="solution-header">
+            <i class="fas fa-industry solution-icon"></i>
+          </div>
+          <div class="solution-content">
+            <h3>Manufacturing</h3>
+            <p>Optimize production, predict maintenance needs, and improve quality control with IoT and AI
+              integration.
+            </p>
+          </div>
+        </div>
+        <div class="solution-card">
+          <div class="solution-header" style="background: var(--gradient-secondary);">
+            <i class="fas fa-truck solution-icon"></i>
+          </div>
+          <div class="solution-content">
+            <h3>Logistics & Supply Chain</h3>
+            <p>Predict demand, optimize inventory, automate logistics, and improve supply chain visibility with
+              intelligent AI.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DOCUMENT SYSTEMS -->
+  <section id="systems" class="systems-section">
+    <div class="container">
+      <div class="section-head">
+        <h2>Input Systems Integration</h2>
+        <p>SFTP, Email, Scanner, ERP exports & more</p>
+      </div>
+      <div class="systems-grid">
+        <div class="system-card">
+          <div class="system-icon">SFTP</div>
+          <h3>Secure FTP</h3>
+          <p>Automated batch document transfers with enterprise-grade security and monitoring.</p>
+        </div>
+        <div class="system-card">
+          <div class="system-icon">@</div>
+          <h3>Email Ingest</h3>
+          <p>Automatic inbox monitoring and document extraction from multiple email sources.</p>
+        </div>
+        <div class="system-card">
+          <div class="system-icon">📄</div>
+          <h3>PDF/Scanned</h3>
+          <p>Process invoices, contracts, reports, and scanned documents with OCR accuracy.</p>
+        </div>
+        <div class="system-card">
+          <div class="system-icon">XML</div>
+          <h3>Structured Data</h3>
+          <p>Handle XML, JSON, and other structured enterprise document formats.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DOCUMENT FLOW -->
+  <section class="document-flow">
+    <div class="container">
+      <div class="section-head">
+        <h2>Intelligent Document Processing Flow</h2>
+        <p>From ingestion to actionable insights - automated and intelligent</p>
+      </div>
+      <div class="flow-steps">
+        <div class="flow-step">
+          <div class="flow-step-icon"><i class="fas fa-layer-group"></i></div>
+          <span>Classify</span>
+          <p>Automatically categorize documents by type, priority, and department.</p>
+        </div>
+        <div class="flow-arrow"><i class="fas fa-chevron-right"></i></div>
+        <div class="flow-step">
+          <div class="flow-step-icon"><i class="fas fa-search"></i></div>
+          <span>Recognize</span>
+          <p>Extract data with AI-powered OCR and intelligent field recognition.</p>
+        </div>
+        <div class="flow-arrow"><i class="fas fa-chevron-right"></i></div>
+        <div class="flow-step">
+          <div class="flow-step-icon"><i class="fas fa-check-circle"></i></div>
+          <span>Review</span>
+          <p>Human-in-the-loop validation with AI-assisted error detection.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OPERATOR INTERFACE -->
+  <section id="operator" class="operator-section">
+    <div class="container">
+      <div class="section-head">
+        <h2>Vincarna Operator Interface</h2>
+        <p>Intelligent document processing with human oversight</p>
+      </div>
+
+      <!-- Replace the entire operator-container div with this: -->
+      <div class="app-container">
+        <header class="header">
+          <div class="logo">
+            <div class="logo-icon">◈</div>
+            Vincarna Tech
+          </div>
+          <div class="nav">
+            <div class="nav-item active">
+              <span></span>
+              <span>Invoice Process</span>
+            </div>
+            <div class="nav-item active">
+              <span></span>
+              <span>Processing History</span>
+            </div>
+            <div class="settings-icon">
+              <span></span>
+            </div>
+          </div>
+        </header>
+
+        <div class="content-grid">
+          <div class="card">
+            <div class="upload-zone" id="uploadZone">
+              <div class="upload-icon">☁️</div>
+              <div style="font-size: 18px; font-weight: 600; margin-bottom: 8px;">
+                Drag & drop your files here
+              </div>
+              <div style="color: rgba(255, 255, 255, 0.6);">
+                or click to browse
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="invoice-preview" id="previewCard">
+              <div class="scan-line" id="scanLine"></div>
+              <img
+                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 400'%3E%3Crect fill='%23ffffff' width='300' height='400'/%3E%3Ctext x='150' y='50' text-anchor='middle' font-family='Arial' font-size='32' font-weight='bold' fill='%23333'>INVOICE%3C/text%3E%3Cline x1='30' y1='80' x2='270' y2='80' stroke='%23ddd' stroke-width='2'/%3E%3Ctext x='30' y='110' font-family='Arial' font-size='12' fill='%23666'>Invoice Date: 11/07/2025%3C/text%3E%3Ctext x='30' y='130' font-family='Arial' font-size='12' fill='%23666'>Invoice No: INV-2025-001%3C/text%3E%3Crect x='30' y='150' width='240' height='150' fill='%23f5f5f5' stroke='%23ddd'/%3E%3Ctext x='40' y='180' font-family='Arial' font-size='11' fill='%23333'>Item 1............................$50.00%3C/text%3E%3Ctext x='40' y='200' font-family='Arial' font-size='11' fill='%23333'>Item 2............................$75.00%3C/text%3E%3Ctext x='40' y='220' font-family='Arial' font-size='11' fill='%23333'>Item 3............................$25.00%3C/text%3E%3Cline x1='30' y1='320' x2='270' y2='320' stroke='%23333' stroke-width='2'/%3E%3Ctext x='30' y='345' font-family='Arial' font-size='14' font-weight='bold' fill='%23333'>Total: $150.00%3C/text%3E%3C/svg%3E"
+                alt="Invoice Preview" class="invoice-img" id="invoiceImg">
+              <div class="zoom-controls">
+                <button class="zoom-btn">🔍</button>
+                <button class="zoom-btn">🔎</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="card review-panel">
+            <h3>Review Errors</h3>
+            <p class="review-text" id="reviewText">
+              Review the details extracted by OCR from the document. Verify accuracy of invoice numbers, dates, supplier
+              names, and line items before validation.
+            </p>
+          </div>
+        </div>
+
+        <div class="documents-section">
+          <h2 class="section-header">Document Uploaded</h2>
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Uploaded Files (6)</th>
+                  <th>Date/Time</th>
+                  <th>Extraction Status</th>
+                  <th>Validation Status</th>
+                  <th>Supplier Name</th>
+                  <th>Invoice #</th>
+                  <th>Invoice header</th>
+                </tr>
+              </thead>
+              <tbody id="tableBody">
+                <tr>
+                  <td><span class="file-icon"></span>invoice_2023_001.pdf (1.2 MB)</td>
+                  <td>11/7/25 16:25</td>
+                  <td><span class="status-badge status-extracted">✓ Extracted</span></td>
+                  <td><span class="status-badge status-validated">✓ Validated</span></td>
+                  <td>RELIANCE INDUSTRIES PVT LTD</td>
+                  <td>RL/6953</td>
+                  <td><span class="invoice-number"><span class="checkmark">✓</span> 24552</span></td>
+                </tr>
+                <tr>
+                  <td><span class="file-icon"></span>invoice_2023_002.pdf (1.2 MB)</td>
+                  <td>11/7/25 16:28</td>
+                  <td><span class="status-badge status-extracted">✓ Extracted</span></td>
+                  <td><span class="status-badge status-validated">✓ Validated</span></td>
+                  <td>VOLVO CONSTRUCTION</td>
+                  <td>IV23154</td>
+                  <td><button class="btn btn-correct"><span>Correct Errors</span></button></td>
+                </tr>
+                <tr>
+                  <td><span class="file-icon"></span>invoice_2023_003.pdf (1.2 MB)</td>
+                  <td>11/7/25 16:32</td>
+                  <td><span class="status-badge status-extracted">✓ Extracted</span></td>
+                  <td><button class="btn btn-validate"><span>Validate</span></button></td>
+                  <td>TECH SOLUTIONS INC</td>
+                  <td>TS-8821</td>
+                  <td>-</td>
+                </tr>
+                <tr>
+                  <td><span class="file-icon"></span>invoice_2023_004.pdf (1.2 MB)</td>
+                  <td>11/7/25 16:25</td>
+                  <td><span class="status-badge status-processing">⏳ Processing</span></td>
+                  <td><span class="status-badge status-pending">● Pending</span></td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                </tr>
+                <tr>
+                  <td><span class="file-icon"></span>invoice_2023_005.pdf (1.2 MB)</td>
+                  <td>11/7/25 16:28</td>
+                  <td><span class="status-badge status-processing">⏳ Processing</span></td>
+                  <td><span class="status-badge status-pending">● Pending</span></td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                </tr>
+                <tr>
+                  <td><span class="file-icon"></span>invoice_2023_006.pdf (1.2 MB)</td>
+                  <td>11/7/25 16:32</td>
+                  <td><button class="btn btn-extract"><span>Extract</span></button></td>
+                  <td><span class="status-badge status-pending">● Pending</span></td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- FEATURES -->
+  <section id="features" class="features-section">
+    <div class="container">
+      <div class="section-head">
+        <h2>Enterprise Document Intelligence Features</h2>
+        <p>Advanced AI capabilities for modern document processing</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-robot"></i></div>
+          <h3>AI-Powered OCR</h3>
+          <p>Advanced optical character recognition with machine learning for high accuracy extraction.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-brain"></i></div>
+          <h3>Smart Classification</h3>
+          <p>Automatically categorize documents by type, urgency, and department with AI.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-cogs"></i></div>
+          <h3>ERP Integration</h3>
+          <p>Seamless integration with SAP, Oracle, Microsoft Dynamics and other enterprise systems.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+          <h3>Enterprise Security</h3>
+          <p>End-to-end encryption, access controls, and compliance with global standards.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
+          <h3>Analytics & Insights</h3>
+          <p>Real-time dashboards and analytics for document processing performance.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-sync-alt"></i></div>
+          <h3>Workflow Automation</h3>
+          <p>Automated routing, approvals, and notifications for streamlined operations.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="process" class="process-section">
+    <div class="container">
+      <div class="section-head">
+        <h2>How It Works</h2>
+        <p>Simple, secure, and scalable AI implementation</p>
+      </div>
+      <div class="process-steps">
+        <div class="process-step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h3>Discovery & Analysis</h3>
+            <p>We analyze your business processes and identify AI opportunities with maximum ROI.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h3>Solution Design</h3>
+            <p>Custom AI solution design tailored to your specific business needs and existing systems.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <h3>Implementation</h3>
+            <p>Seamless integration with your existing infrastructure and comprehensive testing.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <h3>Optimization & Support</h3>
+            <p>Continuous monitoring, optimization, and 24/7 support to ensure peak performance.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIAL -->
+  <section class="testimonial-section">
+    <div class="container">
+      <div class="section-head">
+        <h2>What Our Customers Say</h2>
+        <p>Join enterprises that trust Vincarna Tech for AI transformation</p>
+      </div>
+      <div class="testimonial-slider">
+        <div class="testimonial-content">
+          "Vincarna Tech transformed our document processing operations. Their AI solutions integrated seamlessly with
+          our existing systems, automating processes that used to take weeks. The efficiency gains they promised were
+          actually conservative - we're seeing closer to 60% improvement in key areas."
+        </div>
+        <div class="testimonial-author">
+          <div class="author-avatar">JW</div>
+          <div class="author-info">
+            <h4>James Wilson</h4>
+            <p>Chief Operations Officer, Global Manufacturing Corp</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="contact">
+    <div class="container">
+      <div class="cta">
+        <h2>Ready to Transform Your Document Workflow?</h2>
+        <p>See how Vincarna Tech brings intelligent AI automation to your enterprise. Schedule a personalized demo to
+          see the operator interface in action.</p>
+        <a href="mailto:contact@vincarnatech.com" class="btn btn-primary">
+          <i class="fas fa-calendar-check"></i> Schedule Demo
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div>
+          <a href="#" class="footer-logo">
+            <div class="logo-icon">V</div>
+            <div class="logo">Vincarna<span>Tech</span></div>
+          </a>
+          <p class="footer-description">Enterprise Document Intelligence & AI Automation solutions. Transform your
+            document workflows with intelligent automation that learns, adapts, and scales.</p>
+          <div class="social-links">
+            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <h4>Document Solutions</h4>
+          <ul>
+            <li><a href="#systems">Input Systems</a></li>
+            <li><a href="#operator">Operator Interface</a></li>
+            <li><a href="#features">AI Features</a></li>
+            <li><a href="#process">How It Works</a></li>
+            <li><a href="#solutions">Industry Solutions</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#careers">Careers</a></li>
+            <li><a href="#blog">Blog</a></li>
+            <li><a href="#press">Press</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="#documentation">Documentation</a></li>
+            <li><a href="#help">Help Center</a></li>
+            <li><a href="#api">API Reference</a></li>
+            <li><a href="#status">System Status</a></li>
+            <li><a href="#support">Support</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>&copy; 2026 Vincarna Tech. All rights reserved. | Enterprise Document Intelligence & AI Automation</p>
+      </div>
+    </div>
+  </footer>
+
+
+
+  <script>
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const navLinks = document.getElementById('navLinks');
+    const navbar = document.getElementById('navbar');
+
+    mobileMenuBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      mobileMenuBtn.innerHTML = navLinks.classList.contains('active')
+        ? '<i class="fas fa-times"></i>'
+        : '<i class="fas fa-bars"></i>';
+    });
+
+    // Close mobile menu when clicking on a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+      });
+    });
+
+    // Header scroll effect
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        if (this.getAttribute('href') === '#') return;
+
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // Operator interface interaction
+    document.querySelectorAll('.task-item').forEach((item, index) => {
+      item.addEventListener('click', () => {
+        const descriptions = [
+          "Processing company documents for invoice extraction...",
+          "Logging into Amazon.de with secure credentials...",
+          "Downloading and processing invoice files..."
+        ];
+
+        const promptInput = document.querySelector('.prompt-input');
+        promptInput.value = descriptions[index];
+        promptInput.focus();
+      });
+    });
+
+    // Handle window resize
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768) {
+        navLinks.classList.remove('active');
+        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+      }
+    });
+
+    // Initialize animations on scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    // Observe elements for animation
+    document.querySelectorAll('.system-card, .feature-card, .solution-card, .process-step, .flow-step').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(el);
+    });
+
+
+
+
+
+
+    // Create floating particles
+    function createParticles() {
+      const particlesContainer = document.getElementById('particles');
+      for (let i = 0; i < 30; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.animationDelay = Math.random() * 10 + 's';
+        particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+        particlesContainer.appendChild(particle);
+      }
+    }
+
+    // Automated demo workflow
+    let demoRunning = false;
+    let demoStep = 0;
+
+    async function runDemo() {
+      if (demoRunning) return;
+      demoRunning = true;
+
+      await simulateFileDrop();
+      await delay(1000);
+      await simulateUpload();
+      await delay(1500);
+      await simulateOCRScanning();
+      await delay(1000);
+      await simulateExtraction();
+      await delay(1500);
+      await simulateValidation();
+      await delay(2000);
+
+      demoRunning = false;
+      // Restart demo after a pause
+      setTimeout(runDemo, 3000);
+    }
+
+    function delay(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    // Simulate file being dragged and dropped
+    async function simulateFileDrop() {
+      const animatedFile = document.getElementById('animatedFile');
+      const uploadZone = document.getElementById('uploadZone');
+      const uploadRect = uploadZone.getBoundingClientRect();
+
+      // Start from top left
+      animatedFile.style.left = '20px';
+      animatedFile.style.top = '-100px';
+      animatedFile.style.opacity = '1';
+      animatedFile.style.transform = 'scale(1)';
+
+      await delay(100);
+
+      // Animate to upload zone
+      animatedFile.style.transition = 'all 1.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
+      animatedFile.style.left = uploadRect.left + uploadRect.width / 2 - 40 + 'px';
+      animatedFile.style.top = uploadRect.top + uploadRect.height / 2 - 50 + 'px';
+
+      uploadZone.classList.add('drag-over');
+
+      await delay(1500);
+
+      // File drops
+      animatedFile.style.transform = 'scale(0.5)';
+      animatedFile.style.opacity = '0';
+
+      await delay(300);
+      uploadZone.classList.remove('drag-over');
+    }
+
+    // Simulate upload process
+    async function simulateUpload() {
+      const uploadZone = document.getElementById('uploadZone');
+      uploadZone.innerHTML = `
+                <div style="font-size: 48px; animation: spin 1s linear infinite;">⏳</div>
+                <div style="margin-top: 20px; font-weight: 600;">Uploading Document...</div>
+                <div class="progress-bar"><div class="progress-fill" id="uploadProgress"></div></div>
+            `;
+
+      const progressBar = document.getElementById('uploadProgress');
+      for (let i = 0; i <= 100; i += 5) {
+        progressBar.style.width = i + '%';
+        await delay(50);
+      }
+
+      await delay(300);
+
+      uploadZone.innerHTML = `
+                <div style="font-size: 48px; color: #22c55e;">✓</div>
+                <div style="margin-top: 20px; color: #22c55e; font-weight: 600;">Upload Complete!</div>
+            `;
+
+      await delay(800);
+
+      uploadZone.innerHTML = `
+                <div class="upload-icon">☁️</div>
+                <div style="font-size: 18px; font-weight: 600; margin-bottom: 8px;">
+                    Drag & drop your files here
+                </div>
+                <div style="color: rgba(255, 255, 255, 0.6);">
+                    or click to browse
+                </div>
+            `;
+    }
+
+    // Simulate OCR scanning
+    async function simulateOCRScanning() {
+      const previewCard = document.getElementById('previewCard');
+      const scanLine = document.getElementById('scanLine');
+      const reviewText = document.getElementById('reviewText');
+
+      // Add indicator
+      const indicator = document.createElement('div');
+      indicator.className = 'process-indicator';
+      indicator.textContent = 'OCR Scanning...';
+      previewCard.appendChild(indicator);
+
+      // Trigger scan animation
+      scanLine.classList.add('active');
+
+      reviewText.innerHTML = `
+                <div style="color: #fbbf24; font-weight: 600; margin-bottom: 10px;">
+                    🔍 Scanning document with OCR...
+                </div>
+                <div style="color: rgba(255, 255, 255, 0.7); line-height: 1.6;">
+                    Detecting text, numbers, tables, and invoice structure...
+                </div>
+            `;
+
+      await delay(2000);
+
+      scanLine.classList.remove('active');
+      indicator.remove();
+    }
+
+    // Simulate data extraction
+    async function simulateExtraction() {
+      const tableBody = document.getElementById('tableBody');
+      const rows = tableBody.getElementsByTagName('tr');
+      const reviewText = document.getElementById('reviewText');
+
+      reviewText.innerHTML = `
+                <div style="color: #fbbf24; font-weight: 600; margin-bottom: 10px;">
+                    ⚙️ Extracting data fields...
+                </div>
+                <div style="color: rgba(255, 255, 255, 0.7); line-height: 1.6;">
+                    Parsing invoice number, date, supplier, line items...
+                </div>
+            `;
+
+      // Highlight the last row being processed
+      const lastRow = rows[rows.length - 1];
+      lastRow.classList.add('highlight');
+
+      await delay(800);
+
+      // Update extraction status
+      const extractionCell = lastRow.cells[2];
+      extractionCell.innerHTML = '<span class="status-badge status-processing">⏳ Processing</span>';
+
+      await delay(1000);
+
+      extractionCell.innerHTML = '<span class="status-badge status-extracted">✓ Extracted</span>';
+
+      // Populate supplier name
+      const supplierCell = lastRow.cells[4];
+      supplierCell.textContent = 'ACME CORPORATION';
+
+      // Populate invoice number
+      const invoiceCell = lastRow.cells[5];
+      invoiceCell.textContent = 'AC-9912';
+
+      await delay(500);
+
+      lastRow.classList.remove('highlight');
+
+      reviewText.innerHTML = `
+                <div style="color: #22c55e; font-weight: 600; margin-bottom: 10px;">
+                    ✓ Data extracted successfully
+                </div>
+                <div style="color: rgba(255, 255, 255, 0.7); line-height: 1.6;">
+                    Invoice #: AC-9912 | Supplier: ACME CORPORATION<br>
+                    Date: 11/07/2025 | Amount: $150.00
+                </div>
+            `;
+    }
+
+    // Simulate validation
+    async function simulateValidation() {
+      const tableBody = document.getElementById('tableBody');
+      const rows = tableBody.getElementsByTagName('tr');
+      const reviewText = document.getElementById('reviewText');
+
+      reviewText.innerHTML = `
+                <div style="color: #8b5cf6; font-weight: 600; margin-bottom: 10px;">
+                    🔍 Validating data...
+                </div>
+                <div style="color: rgba(255, 255, 255, 0.7); line-height: 1.6;">
+                    Checking for errors, duplicates, and data consistency...
+                </div>
+            `;
+
+      const lastRow = rows[rows.length - 1];
+      lastRow.classList.add('highlight');
+
+      await delay(1200);
+
+      // Update validation status
+      const validationCell = lastRow.cells[3];
+      validationCell.innerHTML = '<span class="status-badge status-validated">✓ Validated</span>';
+
+      // Update header with checkmark
+      const headerCell = lastRow.cells[6];
+      headerCell.innerHTML = '<span class="invoice-number"><span class="checkmark">✓</span> 24552</span>';
+
+      await delay(500);
+
+      lastRow.classList.remove('highlight');
+
+      reviewText.innerHTML = `
+                <div style="color: #22c55e; font-weight: 600; margin-bottom: 10px;">
+                    ✓ Validation complete
+                </div>
+                <div style="color: rgba(255, 255, 255, 0.7); line-height: 1.6;">
+                    All data validated successfully. Invoice ready for processing.
+                </div>
+            `;
+    }
+
+    // Initialize
+    createParticles();
+
+    // Start the demo after page loads
+    setTimeout(() => {
+      runDemo();
+    }, 2000);
+  </script>
+
+</body>
+
+</html>
