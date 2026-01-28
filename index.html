@@ -204,135 +204,158 @@
         <p>Intelligent document processing with human oversight</p>
       </div>
 
-      <!-- Replace the entire operator-container div with this: -->
-      <div class="app-container">
-        <header class="header">
-          <div class="logo">
-            <div class="logo-icon">◈</div>
-            Vincarna Tech
-          </div>
-          <div class="nav">
-            <div class="nav-item active">
-              <span></span>
-              <span>Invoice Process</span>
-            </div>
-            <div class="nav-item active">
-              <span></span>
-              <span>Processing History</span>
-            </div>
-            <div class="settings-icon">
-              <span></span>
-            </div>
-          </div>
-        </header>
+      <div class="demo-window">
+        <!-- Floating Particles Container -->
+        <div id="particles" class="particles"></div>
 
-        <div class="content-grid">
-          <div class="card">
-            <div class="upload-zone" id="uploadZone">
-              <div class="upload-icon">☁️</div>
-              <div style="font-size: 18px; font-weight: 600; margin-bottom: 8px;">
-                Drag & drop your files here
-              </div>
-              <div style="color: rgba(255, 255, 255, 0.6);">
-                or click to browse
-              </div>
-            </div>
+        <!-- Window Header -->
+        <div class="window-header">
+          <div class="window-controls">
+            <div class="window-control-btn"></div>
+            <div class="window-control-btn"></div>
+            <div class="window-control-btn"></div>
           </div>
-
-          <div class="card">
-            <div class="invoice-preview" id="previewCard">
-              <div class="scan-line" id="scanLine"></div>
-              <img
-                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 400'%3E%3Crect fill='%23ffffff' width='300' height='400'/%3E%3Ctext x='150' y='50' text-anchor='middle' font-family='Arial' font-size='32' font-weight='bold' fill='%23333'>INVOICE%3C/text%3E%3Cline x1='30' y1='80' x2='270' y2='80' stroke='%23ddd' stroke-width='2'/%3E%3Ctext x='30' y='110' font-family='Arial' font-size='12' fill='%23666'>Invoice Date: 11/07/2025%3C/text%3E%3Ctext x='30' y='130' font-family='Arial' font-size='12' fill='%23666'>Invoice No: INV-2025-001%3C/text%3E%3Crect x='30' y='150' width='240' height='150' fill='%23f5f5f5' stroke='%23ddd'/%3E%3Ctext x='40' y='180' font-family='Arial' font-size='11' fill='%23333'>Item 1............................$50.00%3C/text%3E%3Ctext x='40' y='200' font-family='Arial' font-size='11' fill='%23333'>Item 2............................$75.00%3C/text%3E%3Ctext x='40' y='220' font-family='Arial' font-size='11' fill='%23333'>Item 3............................$25.00%3C/text%3E%3Cline x1='30' y1='320' x2='270' y2='320' stroke='%23333' stroke-width='2'/%3E%3Ctext x='30' y='345' font-family='Arial' font-size='14' font-weight='bold' fill='%23333'>Total: $150.00%3C/text%3E%3C/svg%3E"
-                alt="Invoice Preview" class="invoice-img" id="invoiceImg">
-              <div class="zoom-controls">
-                <button class="zoom-btn">🔍</button>
-                <button class="zoom-btn">🔎</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="card review-panel">
-            <h3>Review Errors</h3>
-            <p class="review-text" id="reviewText">
-              Review the details extracted by OCR from the document. Verify accuracy of invoice numbers, dates, supplier
-              names, and line items before validation.
-            </p>
-          </div>
+          <div class="window-title">Invoice Processor - Demo</div>
         </div>
 
-        <div class="documents-section">
-          <h2 class="section-header">Document Uploaded</h2>
-          <div class="table-container">
-            <table>
-              <thead>
-                <tr>
-                  <th>Uploaded Files (6)</th>
-                  <th>Date/Time</th>
-                  <th>Extraction Status</th>
-                  <th>Validation Status</th>
-                  <th>Supplier Name</th>
-                  <th>Invoice #</th>
-                  <th>Invoice header</th>
-                </tr>
-              </thead>
-              <tbody id="tableBody">
-                <tr>
-                  <td><span class="file-icon"></span>invoice_2023_001.pdf (1.2 MB)</td>
-                  <td>11/7/25 16:25</td>
-                  <td><span class="status-badge status-extracted">✓ Extracted</span></td>
-                  <td><span class="status-badge status-validated">✓ Validated</span></td>
-                  <td>RELIANCE INDUSTRIES PVT LTD</td>
-                  <td>RL/6953</td>
-                  <td><span class="invoice-number"><span class="checkmark">✓</span> 24552</span></td>
-                </tr>
-                <tr>
-                  <td><span class="file-icon"></span>invoice_2023_002.pdf (1.2 MB)</td>
-                  <td>11/7/25 16:28</td>
-                  <td><span class="status-badge status-extracted">✓ Extracted</span></td>
-                  <td><span class="status-badge status-validated">✓ Validated</span></td>
-                  <td>VOLVO CONSTRUCTION</td>
-                  <td>IV23154</td>
-                  <td><button class="btn btn-correct"><span>Correct Errors</span></button></td>
-                </tr>
-                <tr>
-                  <td><span class="file-icon"></span>invoice_2023_003.pdf (1.2 MB)</td>
-                  <td>11/7/25 16:32</td>
-                  <td><span class="status-badge status-extracted">✓ Extracted</span></td>
-                  <td><button class="btn btn-validate"><span>Validate</span></button></td>
-                  <td>TECH SOLUTIONS INC</td>
-                  <td>TS-8821</td>
-                  <td>-</td>
-                </tr>
-                <tr>
-                  <td><span class="file-icon"></span>invoice_2023_004.pdf (1.2 MB)</td>
-                  <td>11/7/25 16:25</td>
-                  <td><span class="status-badge status-processing">⏳ Processing</span></td>
-                  <td><span class="status-badge status-pending">● Pending</span></td>
-                  <td>-</td>
-                  <td>-</td>
-                  <td>-</td>
-                </tr>
-                <tr>
-                  <td><span class="file-icon"></span>invoice_2023_005.pdf (1.2 MB)</td>
-                  <td>11/7/25 16:28</td>
-                  <td><span class="status-badge status-processing">⏳ Processing</span></td>
-                  <td><span class="status-badge status-pending">● Pending</span></td>
-                  <td>-</td>
-                  <td>-</td>
-                  <td>-</td>
-                </tr>
-                <tr>
-                  <td><span class="file-icon"></span>invoice_2023_006.pdf (1.2 MB)</td>
-                  <td>11/7/25 16:32</td>
-                  <td><button class="btn btn-extract"><span>Extract</span></button></td>
-                  <td><span class="status-badge status-pending">● Pending</span></td>
-                  <td>-</td>
-                  <td>-</td>
-                  <td>-</td>
-                </tr>
-              </tbody>
-            </table>
+        <div class="app-container">
+          <!-- App Header -->
+          <header class="demo-header">
+            <div class="demo-logo">
+              <div class="demo-logo-icon">◈</div>
+              App Name
+            </div>
+            <div class="demo-nav">
+              <div class="demo-nav-item active">
+                <span>📄</span>
+                <span>Invoice Process</span>
+              </div>
+              <div class="demo-nav-item">
+                <span>📊</span>
+                <span>Processing History</span>
+              </div>
+              <div class="settings-icon">
+                <span>⚙️</span>
+              </div>
+            </div>
+          </header>
+
+          <div class="content-grid">
+            <div class="demo-card">
+              <div class="upload-zone" id="uploadZone">
+                <div class="upload-icon">☁️</div>
+                <div style="font-size: 18px; font-weight: 600; margin-bottom: 8px; color: white;">Drag & drop your files
+                  here</div>
+                <div style="color: rgba(255, 255, 255, 0.6);">or click to browse</div>
+              </div>
+            </div>
+
+            <div class="demo-card">
+              <div class="invoice-preview" id="previewCard">
+                <div class="scan-line" id="scanLine"></div>
+                <img
+                  src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 400'%3E%3Crect fill='%23ffffff' width='300' height='400'/%3E%3Ctext x='150' y='50' text-anchor='middle' font-family='Arial' font-size='32' font-weight='bold' fill='%23333'>INVOICE%3C/text%3E%3Cline x1='30' y1='80' x2='270' y2='80' stroke='%23ddd' stroke-width='2'/%3E%3Ctext x='30' y='110' font-family='Arial' font-size='12' fill='%23666'>Invoice Date: 11/07/2025%3C/text%3E%3Ctext x='30' y='130' font-family='Arial' font-size='12' fill='%23666'>Invoice No: INV-2025-001%3C/text%3E%3Crect x='30' y='150' width='240' height='150' fill='%23f5f5f5' stroke='%23ddd'/%3E%3Ctext x='40' y='180' font-family='Arial' font-size='11' fill='%23333'>Item 1............................$50.00%3C/text%3E%3Ctext x='40' y='200' font-family='Arial' font-size='11' fill='%23333'>Item 2............................$75.00%3C/text%3E%3Ctext x='40' y='220' font-family='Arial' font-size='11' fill='%23333'>Item 3............................$25.00%3C/text%3E%3Cline x1='30' y1='320' x2='270' y2='320' stroke='%23333' stroke-width='2'/%3E%3Ctext x='30' y='345' font-family='Arial' font-size='14' font-weight='bold' fill='%23333'>Total: $150.00%3C/text%3E%3C/svg%3E"
+                  alt="Invoice Preview" class="invoice-img" id="invoiceImg">
+                <div class="zoom-controls">
+                  <button class="zoom-btn">🔍</button>
+                  <button class="zoom-btn">🔎</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="demo-card review-panel">
+              <h3>Review Errors</h3>
+              <p class="review-text" id="reviewText">Review the details extracted by OCR from the document. Verify
+                accuracy of invoice numbers, tables, names, and line item validation.</p>
+            </div>
+          </div>
+
+          <div class="documents-section">
+            <h2 class="section-header">Document Uploaded</h2>
+            <div class="table-container">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Uploaded Files</th>
+                    <th>Date/Time</th>
+                    <th>Extraction Status</th>
+                    <th>Validation Status</th>
+                    <th>Supplier Name</th>
+                    <th>Invoice #</th>
+                    <th>Invoice header</th>
+                  </tr>
+                </thead>
+                <tbody id="tableBody">
+                  <tr>
+                    <td><span class="file-icon">📄</span>invoice_2023_001.pdf (1.2 MB)</td>
+                    <td>11/7/25 16:25</td>
+                    <td><span class="status-badge status-extracted">✓ Extracted</span></td>
+                    <td><span class="status-badge status-validated">✓ Validated</span></td>
+                    <td>RELIANCE INDUSTRIES PVT LTD</td>
+                    <td>RL/6953</td>
+                    <td><span class="invoice-number"><span class="checkmark">✓</span> 24552</span></td>
+                  </tr>
+                  <tr>
+                    <td><span class="file-icon">📄</span>invoice_2023_002.pdf (1.2 MB)</td>
+                    <td>11/7/25 16:28</td>
+                    <td><span class="status-badge status-extracted">✓ Extracted</span></td>
+                    <td><span class="status-badge status-validated">✓ Validated</span></td>
+                    <td>VOLVO CONSTRUCTION</td>
+                    <td>IV23154</td>
+                    <td><button class="btn btn-correct" onclick="openModal()"><span>Correct Errors</span></button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Animated File Icon for Drag Effect -->
+      <div id="animatedFile" class="animated-file">📄</div>
+
+      <!-- Validation Modal -->
+      <div class="modal-overlay" id="validationModal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <div class="modal-title">
+              <div class="app-logo">◈</div>
+              <h2>Validation Interface</h2>
+            </div>
+            <button class="close-btn" onclick="closeModal()">×</button>
+          </div>
+          <div class="modal-body">
+            <div class="invoice-section">
+              <img
+                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 400'%3E%3Crect fill='%23ffffff' width='300' height='400'/%3E%3Ctext x='150' y='50' text-anchor='middle' font-family='Arial' font-size='32' font-weight='bold' fill='%23333'>INVOICE%3C/text%3E%3Cline x1='30' y1='80' x2='270' y2='80' stroke='%23ddd' stroke-width='2'/%3E%3Ctext x='30' y='110' font-family='Arial' font-size='12' fill='%23666'>Invoice Date: 11/07/2025%3C/text%3E%3Ctext x='30' y='130' font-family='Arial' font-size='12' fill='%23666'>Invoice No: INV-2025-001%3C/text%3E%3Crect x='30' y='150' width='240' height='150' fill='%23f5f5f5' stroke='%23ddd'/%3E%3Ctext x='40' y='180' font-family='Arial' font-size='11' fill='%23333'>Item 1............................$50.00%3C/text%3E%3Ctext x='40' y='200' font-family='Arial' font-size='11' fill='%23333'>Item 2............................$75.00%3C/text%3E%3Ctext x='40' y='220' font-family='Arial' font-size='11' fill='%23333'>Item 3............................$25.00%3C/text%3E%3Cline x1='30' y1='320' x2='270' y2='320' stroke='%23333' stroke-width='2'/%3E%3Ctext x='30' y='345' font-family='Arial' font-size='14' font-weight='bold' fill='%23333'>Total: $150.00%3C/text%3E%3C/svg%3E"
+                alt="Scanned Invoice" class="invoice-preview-large">
+            </div>
+            <div class="form-section">
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label">Vendor Name ⚠️</label>
+                  <input type="text" class="form-input" value="VOLO CONSTRICTION" id="supplierInput">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Invoice Date</label>
+                  <input type="text" class="form-input" value="11/07/2025" id="dateInput">
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label">Invoice Number</label>
+                  <input type="text" class="form-input" value="IV23999" id="invoiceNumberInput">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Total Amount</label>
+                  <input type="text" class="form-input" value="$4,500.00" id="amountInput">
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button class="btn-large btn-cancel" onclick="closeModal()">Cancel</button>
+                <button class="btn-large btn-submit" onclick="validateAndClose()">Validate & Save</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -616,12 +639,24 @@
 
 
 
+    // (Old demo logic removed to avoid conflict with new implementation)
+
+  </script>
+
+
+  <!-- Demo Interface Logic (Exact from Demo File) -->
+  <script>
+    let currentNewRow = null;
+
     // Create floating particles
     function createParticles() {
       const particlesContainer = document.getElementById('particles');
+      if (!particlesContainer) return;
+
       for (let i = 0; i < 30; i++) {
         const particle = document.createElement('div');
         particle.className = 'particle';
+        // Randomize position and animation
         particle.style.left = Math.random() * 100 + '%';
         particle.style.animationDelay = Math.random() * 10 + 's';
         particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
@@ -631,7 +666,6 @@
 
     // Automated demo workflow
     let demoRunning = false;
-    let demoStep = 0;
 
     async function runDemo() {
       if (demoRunning) return;
@@ -645,12 +679,11 @@
       await delay(1000);
       await simulateExtraction();
       await delay(1500);
-      await simulateValidation();
-      await delay(2000);
+      await simulateValidationClick();
 
       demoRunning = false;
       // Restart demo after a pause
-      setTimeout(runDemo, 3000);
+      setTimeout(runDemo, 8000);
     }
 
     function delay(ms) {
@@ -661,26 +694,28 @@
     async function simulateFileDrop() {
       const animatedFile = document.getElementById('animatedFile');
       const uploadZone = document.getElementById('uploadZone');
+      if (!animatedFile || !uploadZone) return;
       const uploadRect = uploadZone.getBoundingClientRect();
 
-      // Start from top left
+      // Reset file position
+      animatedFile.style.transition = 'none';
       animatedFile.style.left = '20px';
-      animatedFile.style.top = '-100px';
+      animatedFile.style.top = '100px'; // Adjusted visual start
       animatedFile.style.opacity = '1';
       animatedFile.style.transform = 'scale(1)';
 
       await delay(100);
 
-      // Animate to upload zone
+      // Animate to center
       animatedFile.style.transition = 'all 1.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
-      animatedFile.style.left = uploadRect.left + uploadRect.width / 2 - 40 + 'px';
-      animatedFile.style.top = uploadRect.top + uploadRect.height / 2 - 50 + 'px';
+      animatedFile.style.left = (uploadRect.left + uploadRect.width / 2 - 30) + 'px';
+      animatedFile.style.top = (uploadRect.top + uploadRect.height / 2 - 37) + 'px';
 
       uploadZone.classList.add('drag-over');
 
       await delay(1500);
 
-      // File drops
+      // Disappear into upload zone
       animatedFile.style.transform = 'scale(0.5)';
       animatedFile.style.opacity = '0';
 
@@ -691,36 +726,71 @@
     // Simulate upload process
     async function simulateUpload() {
       const uploadZone = document.getElementById('uploadZone');
+      if (!uploadZone) return;
+
       uploadZone.innerHTML = `
-                <div style="font-size: 48px; animation: spin 1s linear infinite;">⏳</div>
-                <div style="margin-top: 20px; font-weight: 600;">Uploading Document...</div>
-                <div class="progress-bar"><div class="progress-fill" id="uploadProgress"></div></div>
-            `;
+            <div style="font-size: 36px; animation: spin 1s linear infinite;">⏳</div>
+            <div style="margin-top: 15px; font-weight: 600; font-size: 13px; color: white;">Uploading Document...</div>
+            <div class="progress-bar"><div class="progress-fill" id="uploadProgress"></div></div>
+        `;
 
       const progressBar = document.getElementById('uploadProgress');
       for (let i = 0; i <= 100; i += 5) {
-        progressBar.style.width = i + '%';
+        if (progressBar) progressBar.style.width = i + '%';
         await delay(50);
       }
 
       await delay(300);
 
       uploadZone.innerHTML = `
-                <div style="font-size: 48px; color: #22c55e;">✓</div>
-                <div style="margin-top: 20px; color: #22c55e; font-weight: 600;">Upload Complete!</div>
-            `;
+            <div style="font-size: 36px; color: #22c55e;">✓</div>
+            <div style="margin-top: 15px; color: #22c55e; font-weight: 600; font-size: 13px;">Upload Complete!</div>
+        `;
+
+      // Add new row to table
+      addNewRow();
 
       await delay(800);
 
       uploadZone.innerHTML = `
-                <div class="upload-icon">☁️</div>
-                <div style="font-size: 18px; font-weight: 600; margin-bottom: 8px;">
-                    Drag & drop your files here
-                </div>
-                <div style="color: rgba(255, 255, 255, 0.6);">
-                    or click to browse
-                </div>
-            `;
+            <div class="upload-icon">☁️</div>
+            <div style="font-size: 18px; font-weight: 600; margin-bottom: 8px; color: white;">Drag & drop your files here</div>
+            <div style="color: rgba(255, 255, 255, 0.6);">or click to browse</div>
+        `;
+    }
+
+    // Add new row to table
+    function addNewRow() {
+      const tableBody = document.getElementById('tableBody');
+      if (!tableBody) return;
+
+      const newRow = document.createElement('tr');
+      newRow.innerHTML = `
+            <td><span class="file-icon">📄</span>invoice_2023_new.pdf (1.2 MB)</td>
+            <td>${new Date().toLocaleString('en-US', { year: '2-digit', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', hour12: false })}</td>
+            <td><span class="status-badge status-pending">● Pending</span></td>
+            <td><span class="status-badge status-pending">● Pending</span></td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+        `;
+      newRow.style.opacity = '0';
+      newRow.style.transform = 'translateY(-20px)';
+
+      // Insert at the beginning of the table body
+      if (tableBody.firstChild) {
+        tableBody.insertBefore(newRow, tableBody.firstChild);
+      } else {
+        tableBody.appendChild(newRow);
+      }
+
+      currentNewRow = newRow;
+
+      setTimeout(() => {
+        newRow.style.transition = 'all 0.5s ease-out';
+        newRow.style.opacity = '1';
+        newRow.style.transform = 'translateY(0)';
+      }, 100);
     }
 
     // Simulate OCR scanning
@@ -729,23 +799,27 @@
       const scanLine = document.getElementById('scanLine');
       const reviewText = document.getElementById('reviewText');
 
-      // Add indicator
+      if (!previewCard || !scanLine || !reviewText) return;
+
       const indicator = document.createElement('div');
       indicator.className = 'process-indicator';
       indicator.textContent = 'OCR Scanning...';
       previewCard.appendChild(indicator);
 
-      // Trigger scan animation
       scanLine.classList.add('active');
 
       reviewText.innerHTML = `
-                <div style="color: #fbbf24; font-weight: 600; margin-bottom: 10px;">
-                    🔍 Scanning document with OCR...
-                </div>
-                <div style="color: rgba(255, 255, 255, 0.7); line-height: 1.6;">
-                    Detecting text, numbers, tables, and invoice structure...
-                </div>
-            `;
+            <div style="color: #fbbf24; font-weight: 600; margin-bottom: 8px; font-size: 12px;">
+                🔍 Scanning document with OCR...
+            </div>
+            <div style="color: rgba(255, 255, 255, 0.7); line-height: 1.5; font-size: 11px;">
+                Detecting text, numbers, tables, and invoice structure...
+            </div>
+        `;
+
+      if (currentNewRow) {
+        currentNewRow.classList.add('highlight');
+      }
 
       await delay(2000);
 
@@ -755,107 +829,160 @@
 
     // Simulate data extraction
     async function simulateExtraction() {
-      const tableBody = document.getElementById('tableBody');
-      const rows = tableBody.getElementsByTagName('tr');
       const reviewText = document.getElementById('reviewText');
+      if (!reviewText) return;
 
       reviewText.innerHTML = `
-                <div style="color: #fbbf24; font-weight: 600; margin-bottom: 10px;">
-                    ⚙️ Extracting data fields...
-                </div>
-                <div style="color: rgba(255, 255, 255, 0.7); line-height: 1.6;">
-                    Parsing invoice number, date, supplier, line items...
-                </div>
-            `;
+            <div style="color: #fbbf24; font-weight: 600; margin-bottom: 8px; font-size: 12px;">
+                ⚙️ Extracting data fields...
+            </div>
+            <div style="color: rgba(255, 255, 255, 0.7); line-height: 1.5; font-size: 11px;">
+                Parsing invoice number, date, supplier, line items...
+            </div>
+        `;
 
-      // Highlight the last row being processed
-      const lastRow = rows[rows.length - 1];
-      lastRow.classList.add('highlight');
+      if (!currentNewRow) return;
 
       await delay(800);
 
-      // Update extraction status
-      const extractionCell = lastRow.cells[2];
+      const extractionCell = currentNewRow.cells[2];
       extractionCell.innerHTML = '<span class="status-badge status-processing">⏳ Processing</span>';
 
       await delay(1000);
 
       extractionCell.innerHTML = '<span class="status-badge status-extracted">✓ Extracted</span>';
 
-      // Populate supplier name
-      const supplierCell = lastRow.cells[4];
+      const supplierCell = currentNewRow.cells[4];
       supplierCell.textContent = 'ACME CORPORATION';
 
-      // Populate invoice number
-      const invoiceCell = lastRow.cells[5];
+      const invoiceCell = currentNewRow.cells[5];
       invoiceCell.textContent = 'AC-9912';
 
       await delay(500);
 
-      lastRow.classList.remove('highlight');
+      currentNewRow.classList.remove('highlight');
 
       reviewText.innerHTML = `
-                <div style="color: #22c55e; font-weight: 600; margin-bottom: 10px;">
-                    ✓ Data extracted successfully
-                </div>
-                <div style="color: rgba(255, 255, 255, 0.7); line-height: 1.6;">
-                    Invoice #: AC-9912 | Supplier: ACME CORPORATION<br>
-                    Date: 11/07/2025 | Amount: $150.00
-                </div>
-            `;
+            <div style="color: #22c55e; font-weight: 600; margin-bottom: 8px; font-size: 12px;">
+                ✓ Data extracted successfully
+            </div>
+            <div style="color: rgba(255, 255, 255, 0.7); line-height: 1.5; font-size: 11px;">
+                Click "Validate" button to review extracted fields
+            </div>
+        `;
+
+      // Add validate button
+      const validateCell = currentNewRow.cells[3];
+      validateCell.innerHTML = '<button class="btn btn-validate" onclick="openModal()"><span>Validate</span></button>';
     }
 
-    // Simulate validation
-    async function simulateValidation() {
-      const tableBody = document.getElementById('tableBody');
-      const rows = tableBody.getElementsByTagName('tr');
+    // Simulate validation button click (Automated for demo)
+    async function simulateValidationClick() {
       const reviewText = document.getElementById('reviewText');
 
       reviewText.innerHTML = `
-                <div style="color: #8b5cf6; font-weight: 600; margin-bottom: 10px;">
-                    🔍 Validating data...
-                </div>
-                <div style="color: rgba(255, 255, 255, 0.7); line-height: 1.6;">
-                    Checking for errors, duplicates, and data consistency...
-                </div>
-            `;
+            <div style="color: #8b5cf6; font-weight: 600; margin-bottom: 8px; font-size: 12px;">
+                👆 Opening validation form...
+            </div>
+            <div style="color: rgba(255, 255, 255, 0.7); line-height: 1.5; font-size: 11px;">
+                Review and validate extracted data fields
+            </div>
+        `;
 
-      const lastRow = rows[rows.length - 1];
-      lastRow.classList.add('highlight');
+      await delay(1000);
 
-      await delay(1200);
-
-      // Update validation status
-      const validationCell = lastRow.cells[3];
-      validationCell.innerHTML = '<span class="status-badge status-validated">✓ Validated</span>';
-
-      // Update header with checkmark
-      const headerCell = lastRow.cells[6];
-      headerCell.innerHTML = '<span class="invoice-number"><span class="checkmark">✓</span> 24552</span>';
-
-      await delay(500);
-
-      lastRow.classList.remove('highlight');
-
-      reviewText.innerHTML = `
-                <div style="color: #22c55e; font-weight: 600; margin-bottom: 10px;">
-                    ✓ Validation complete
-                </div>
-                <div style="color: rgba(255, 255, 255, 0.7); line-height: 1.6;">
-                    All data validated successfully. Invoice ready for processing.
-                </div>
-            `;
+      openModal();
     }
 
+    // Open validation modal
+    function openModal() {
+      const modal = document.getElementById('validationModal');
+      if (modal) {
+        modal.classList.add('active');
+        setTimeout(() => {
+          highlightFields();
+        }, 500);
+      }
+    }
+
+    // Highlight extracted fields
+    async function highlightFields() {
+      const fields = [
+        'supplierInput',
+        'invoiceNumberInput',
+        'dateInput',
+        'amountInput'
+      ];
+
+      for (const fieldId of fields) {
+        const field = document.getElementById(fieldId);
+        if (field) {
+          field.classList.add('highlighted');
+          await delay(400);
+        }
+      }
+
+      await delay(2000);
+
+      // Remove highlights
+      fields.forEach(fieldId => {
+        const field = document.getElementById(fieldId);
+        if (field) {
+          field.classList.remove('highlighted');
+        }
+      });
+    }
+
+    // Close modal
+    function closeModal() {
+      const modal = document.getElementById('validationModal');
+      if (modal) modal.classList.remove('active');
+    }
+
+    // Validate and close
+    async function validateAndClose() {
+      const reviewText = document.getElementById('reviewText');
+
+      reviewText.innerHTML = `
+            <div style="color: #22c55e; font-weight: 600; margin-bottom: 8px; font-size: 12px;">
+                ✓ Validation complete!
+            </div>
+            <div style="color: rgba(255, 255, 255, 0.7); line-height: 1.5; font-size: 11px;">
+                All data validated successfully. Invoice ready for processing.
+            </div>
+        `;
+
+      if (currentNewRow) {
+        const validationCell = currentNewRow.cells[3];
+        validationCell.innerHTML = '<span class="status-badge status-validated">✓ Validated</span>';
+
+        const headerCell = currentNewRow.cells[6];
+        headerCell.innerHTML = '<span class="invoice-number"><span class="checkmark">✓</span> 24552</span>';
+
+        currentNewRow.classList.add('highlight');
+        await delay(600);
+        currentNewRow.classList.remove('highlight');
+      }
+
+      closeModal();
+    }
+
+    // Make sure we expose functions to window
+    window.openModal = openModal;
+    window.closeModal = closeModal;
+    window.validateAndClose = validateAndClose;
+    window.runDemo = runDemo;
+
     // Initialize
-    createParticles();
+    window.addEventListener('load', () => {
+      createParticles();
+      setTimeout(() => {
+        runDemo();
+      }, 2000);
+    });
 
-    // Start the demo after page loads
-    setTimeout(() => {
-      runDemo();
-    }, 2000);
   </script>
-
 </body>
 
 </html>
+```

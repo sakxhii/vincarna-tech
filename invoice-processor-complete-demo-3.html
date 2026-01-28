@@ -1,0 +1,1563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice Processor - Animated Demo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0f1729 100%);
+            color: #fff;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        .demo-window {
+            width: 50%;
+            min-width: 800px;
+            max-width: 1000px;
+            background: rgba(10, 14, 39, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.6);
+            border: 2px solid rgba(139, 92, 246, 0.3);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .window-header {
+            background: rgba(139, 92, 246, 0.1);
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid rgba(139, 92, 246, 0.2);
+        }
+
+        .window-controls {
+            display: flex;
+            gap: 8px;
+        }
+
+        .window-control-btn {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ef4444;
+        }
+
+        .window-control-btn:nth-child(2) {
+            background: #fbbf24;
+        }
+
+        .window-control-btn:nth-child(3) {
+            background: #22c55e;
+        }
+
+        .window-title {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .app-container {
+            padding: 15px;
+            width: 100%;
+            overflow-y: auto;
+            max-height: calc(100vh - 160px);
+        }
+
+        .app-container::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .app-container::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 4px;
+        }
+
+        .app-container::-webkit-scrollbar-thumb {
+            background: rgba(139, 92, 246, 0.3);
+            border-radius: 4px;
+        }
+
+        .app-container::-webkit-scrollbar-thumb:hover {
+            background: rgba(139, 92, 246, 0.5);
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 20px;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 20px;
+            animation: slideDown 0.6s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 16px;
+            font-weight: 700;
+            color: #8b5cf6;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #8b5cf6, #6366f1);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
+            font-size: 18px;
+        }
+
+        .nav {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            font-size: 12px;
+        }
+
+        .nav-item:hover {
+            background: rgba(139, 92, 246, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .nav-item.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 3px;
+            background: #8b5cf6;
+            border-radius: 2px;
+        }
+
+        /* Main Content */
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+            animation: fadeIn 0.8s ease-out 0.2s both;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #8b5cf6, transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% {
+                transform: translateX(-100%);
+            }
+            50% {
+                transform: translateX(100%);
+            }
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(139, 92, 246, 0.3);
+            box-shadow: 0 20px 40px rgba(139, 92, 246, 0.2);
+        }
+
+        .upload-zone {
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 2px dashed rgba(139, 92, 246, 0.3);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .upload-zone:hover {
+            border-color: #8b5cf6;
+            background: rgba(139, 92, 246, 0.05);
+        }
+
+        .upload-zone.drag-over {
+            border-color: #8b5cf6;
+            background: rgba(139, 92, 246, 0.1);
+            transform: scale(1.02);
+            box-shadow: 0 0 30px rgba(139, 92, 246, 0.4);
+        }
+
+        .upload-icon {
+            font-size: 36px;
+            margin-bottom: 15px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .invoice-preview {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            min-height: 200px;
+        }
+
+        .invoice-img {
+            width: 100%;
+            max-width: 220px;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .zoom-controls {
+            position: absolute;
+            right: 5px;
+            top: 5px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .zoom-btn {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: rgba(139, 92, 246, 0.8);
+            border: none;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .zoom-btn:hover {
+            background: #8b5cf6;
+            transform: scale(1.1);
+        }
+
+        .review-panel h3 {
+            margin-bottom: 8px;
+            color: #8b5cf6;
+            font-size: 16px;
+        }
+
+        .review-text {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.5;
+            font-size: 12px;
+        }
+
+        /* Animated File Icon */
+        .animated-file {
+            position: fixed;
+            width: 60px;
+            height: 75px;
+            background: linear-gradient(135deg, #8b5cf6, #6366f1);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            z-index: 1000;
+            pointer-events: none;
+            opacity: 0;
+            box-shadow: 0 10px 40px rgba(139, 92, 246, 0.6);
+        }
+
+        /* Document Table */
+        .documents-section {
+            animation: fadeIn 1s ease-out 0.4s both;
+        }
+
+        .section-header {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #8b5cf6;
+        }
+
+        .table-container {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 800px;
+        }
+
+        thead {
+            background: rgba(139, 92, 246, 0.1);
+        }
+
+        th {
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+            color: #8b5cf6;
+            border-bottom: 1px solid rgba(139, 92, 246, 0.3);
+            font-size: 11px;
+        }
+
+        tbody tr {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        tbody tr:hover {
+            background: rgba(139, 92, 246, 0.05);
+            transform: translateX(5px);
+        }
+
+        tbody tr.highlight {
+            background: rgba(139, 92, 246, 0.15);
+            animation: highlightPulse 0.6s ease-out;
+        }
+
+        @keyframes highlightPulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.02);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        td {
+            padding: 12px;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 11px;
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 4px 10px;
+            border-radius: 16px;
+            font-size: 10px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .status-extracted {
+            background: rgba(34, 197, 94, 0.2);
+            color: #22c55e;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+        }
+
+        .status-processing {
+            background: rgba(251, 191, 36, 0.2);
+            color: #fbbf24;
+            border: 1px solid rgba(251, 191, 36, 0.3);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.6;
+            }
+        }
+
+        .status-validated {
+            background: rgba(34, 197, 94, 0.2);
+            color: #22c55e;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+        }
+
+        .status-pending {
+            background: rgba(59, 130, 246, 0.2);
+            color: #3b82f6;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+
+        .btn {
+            padding: 6px 14px;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            font-size: 10px;
+            white-space: nowrap;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn-validate {
+            background: linear-gradient(135deg, #8b5cf6, #6366f1);
+            color: white;
+        }
+
+        .btn-extract {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: white;
+        }
+
+        .btn-correct {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            color: white;
+        }
+
+        .invoice-number {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 12px;
+            background: rgba(139, 92, 246, 0.1);
+            border-radius: 6px;
+            border: 1px solid rgba(139, 92, 246, 0.3);
+        }
+
+        .checkmark {
+            color: #22c55e;
+            font-weight: bold;
+        }
+
+        /* Particles Background */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #8b5cf6;
+            border-radius: 50%;
+            opacity: 0;
+            animation: particleFloat 10s infinite;
+        }
+
+        @keyframes particleFloat {
+            0% {
+                transform: translateY(100vh) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) scale(1);
+                opacity: 0;
+            }
+        }
+
+        .file-icon {
+            color: #8b5cf6;
+            margin-right: 8px;
+        }
+
+        .settings-icon {
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .settings-icon:hover {
+            background: rgba(139, 92, 246, 0.2);
+            transform: rotate(90deg);
+        }
+
+        /* Processing stages indicator */
+        .process-indicator {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(139, 92, 246, 0.2);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #8b5cf6;
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        /* Progress bar */
+        .progress-bar {
+            width: 100%;
+            height: 4px;
+            background: rgba(139, 92, 246, 0.2);
+            border-radius: 2px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #8b5cf6, #6366f1);
+            width: 0%;
+            transition: width 0.3s ease;
+            border-radius: 2px;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Demo badge */
+        .demo-badge {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            background: rgba(139, 92, 246, 0.9);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 11px;
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.4);
+            animation: fadeIn 1s ease-out 2s both;
+            z-index: 100;
+        }
+
+        .demo-badge::before {
+            content: '●';
+            color: #22c55e;
+            margin-right: 6px;
+            animation: pulse 2s infinite;
+        }
+
+        /* OCR scanning effect */
+        .scan-line {
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #8b5cf6, transparent);
+            top: 0;
+            left: 0;
+            opacity: 0;
+        }
+
+        .scan-line.active {
+            animation: scan 2s ease-in-out;
+        }
+
+        @keyframes scan {
+            0% {
+                top: 0;
+                opacity: 1;
+            }
+            100% {
+                top: 100%;
+                opacity: 0;
+            }
+        }
+
+        /* Validation Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .modal-content {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 1400px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            animation: slideUp 0.4s ease-out;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #e5e7eb;
+        }
+
+        .modal-title {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: #1f2937;
+        }
+
+        .modal-title h2 {
+            font-size: clamp(20px, 3vw, 28px);
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .app-logo {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #8b5cf6, #6366f1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 32px;
+            cursor: pointer;
+            color: #6b7280;
+            transition: all 0.3s ease;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+        }
+
+        .close-btn:hover {
+            background: #f3f4f6;
+            color: #1f2937;
+        }
+
+        .modal-body {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .invoice-section {
+            background: #f9fafb;
+            padding: 20px;
+            border-radius: 12px;
+        }
+
+        .invoice-preview-large {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-section {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            color: #374151;
+            font-size: 14px;
+        }
+
+        .form-input {
+            padding: 12px 16px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 15px;
+            color: #1f2937;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .form-input.highlighted {
+            background: #fef3c7;
+            border-color: #fbbf24;
+            animation: highlightField 0.6s ease-out;
+        }
+
+        @keyframes highlightField {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.02);
+            }
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #8b5cf6;
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .line-items-section {
+            grid-column: 1 / -1;
+        }
+
+        .line-items-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        .line-items-table th {
+            background: #f3f4f6;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+            color: #374151;
+            border: 1px solid #e5e7eb;
+            font-size: 13px;
+        }
+
+        .line-items-table td {
+            padding: 12px;
+            border: 1px solid #e5e7eb;
+            color: #1f2937;
+        }
+
+        .line-items-table td input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #e5e7eb;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .modal-footer {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #e5e7eb;
+            display: flex;
+            justify-content: flex-end;
+            gap: 15px;
+        }
+
+        .btn-large {
+            padding: 14px 32px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-cancel {
+            background: #f3f4f6;
+            color: #374151;
+        }
+
+        .btn-cancel:hover {
+            background: #e5e7eb;
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            color: white;
+            box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(34, 197, 94, 0.4);
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+        }
+
+        .user-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #8b5cf6, #6366f1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 1024px) {
+            .modal-body {
+                grid-template-columns: 1fr;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav {
+                gap: 10px;
+            }
+
+            .nav-item span:last-child {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="particles" id="particles"></div>
+    <div class="animated-file" id="animatedFile">📄</div>
+    
+    <div class="demo-window">
+        <div class="window-header">
+            <div class="window-controls">
+                <div class="window-control-btn"></div>
+                <div class="window-control-btn"></div>
+                <div class="window-control-btn"></div>
+            </div>
+            <div class="window-title">Invoice Processor - Demo</div>
+        </div>
+
+        <div class="demo-badge">LIVE DEMO</div>
+
+    <!-- Validation Modal -->
+    <div class="modal-overlay" id="validationModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">
+                    <div class="app-logo">◈</div>
+                    <h2>App Name</h2>
+                </div>
+                <div style="display: flex; align-items: center; gap: 20px;">
+                    <div style="color: #6b7280; font-size: 14px;">🔍 ? 💬 🔔</div>
+                    <div class="user-profile">
+                        <div class="user-avatar">DS</div>
+                        <span style="color: white; font-size: 14px;">David Smith</span>
+                    </div>
+                    <button class="close-btn" onclick="closeModal()">×</button>
+                </div>
+            </div>
+
+            <div class="modal-body">
+                <div class="invoice-section">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 550'%3E%3Crect fill='%23ffffff' width='400' height='550'/%3E%3Ctext x='200' y='60' text-anchor='middle' font-family='Arial' font-size='42' font-weight='bold' fill='%23000'>INVOICE%3C/text%3E%3Cline x1='40' y1='90' x2='360' y2='90' stroke='%23ddd' stroke-width='2'/%3E%3Ctext x='40' y='120' font-family='Arial' font-size='13' fill='%23666'>Period of Use Goods%3C/text%3E%3Ctext x='280' y='120' font-family='Arial' font-size='13' fill='%23666'>Credit NO.%3C/text%3E%3Ctext x='40' y='140' font-family='Arial' font-size='13' fill='%23666'>Invoice E-DOC Foundation%3C/text%3E%3Ctext x='280' y='140' font-family='Arial' font-size='13' fill='%23666'>Receivers%3C/text%3E%3Ctext x='40' y='170' font-family='Arial' font-size='13' fill='%23666'>Purchaser%3C/text%3E%3Ctext x='40' y='190' font-family='Arial' font-size='13' fill='%23666'>Payment E-Bill Client%3C/text%3E%3Crect x='40' y='210' width='320' height='120' fill='%23f9fafb' stroke='%23ddd'/%3E%3Ctext x='50' y='230' font-family='Arial' font-size='12' font-weight='bold' fill='%23333'>Description%3C/text%3E%3Ctext x='260' y='230' font-family='Arial' font-size='12' font-weight='bold' fill='%23333'>Charges%3C/text%3E%3Ctext x='320' y='230' font-family='Arial' font-size='12' font-weight='bold' fill='%23333'>Debty%3C/text%3E%3Ctext x='50' y='255' font-family='Arial' font-size='11' fill='%23555'>Equipment%3C/text%3E%3Ctext x='260' y='255' font-family='Arial' font-size='11' fill='%23555'>Level%3C/text%3E%3Ctext x='50' y='275' font-family='Arial' font-size='11' fill='%23555'>Item Consulting/Hosptial visit%3C/text%3E%3Ctext x='260' y='275' font-family='Arial' font-size='11' fill='%23555'>50.00%3C/text%3E%3Ctext x='320' y='275' font-family='Arial' font-size='11' fill='%23555'>0.00%3C/text%3E%3Ctext x='50' y='295' font-family='Arial' font-size='11' fill='%23555'>Personal Dose-control Package%3C/text%3E%3Ctext x='260' y='295' font-family='Arial' font-size='11' fill='%23555'>99.00%3C/text%3E%3Ctext x='320' y='295' font-family='Arial' font-size='11' fill='%23555'>0.00%3C/text%3E%3Ctext x='50' y='315' font-family='Arial' font-size='11' fill='%23555'>E-mail free expense%3C/text%3E%3Ctext x='260' y='315' font-family='Arial' font-size='11' fill='%23555'>0.00%3C/text%3E%3Ctext x='320' y='315' font-family='Arial' font-size='11' fill='%23555'>0.00%3C/text%3E%3Crect x='40' y='350' width='320' height='100' fill='%23f3f4f6' stroke='%23ddd'/%3E%3Ctext x='50' y='370' font-family='Arial' font-size='12' font-weight='bold' fill='%23333'>Explanation for Invoice%3C/text%3E%3Ctext x='50' y='390' font-family='Arial' font-size='10' fill='%23555'>Here we give you a brief full invoice of hand by%3C/text%3E%3Ctext x='50' y='405' font-family='Arial' font-size='10' fill='%23555'>means of order once we collect the daily%3C/text%3E%3Ctext x='50' y='420' font-family='Arial' font-size='10' fill='%23555'>number of goods once the week.%3C/text%3E%3Ctext x='260' y='390' font-family='Arial' font-size='10' fill='%23555'>350 8.000%3C/text%3E%3Ctext x='260' y='405' font-family='Arial' font-size='10' fill='%23555'>382 0.000%3C/text%3E%3Ctext x='260' y='420' font-family='Arial' font-size='10' fill='%23555'>383 0.000%3C/text%3E%3Ctext x='260' y='435' font-family='Arial' font-size='10' fill='%23555'>390 0.000%3C/text%3E%3Ctext x='50' y='480' font-family='Arial' font-size='11' fill='%23333'>Purchases total as Gasfilter%3C/text%3E%3Ctext x='50' y='500' font-family='Arial' font-size='11' fill='%23333'>Available to acquire code 024933%3C/text%3E%3C/svg%3E" alt="Invoice" class="invoice-preview-large" id="modalInvoiceImg">
+                </div>
+
+                <div class="form-section">
+                    <div class="form-group">
+                        <label class="form-label">Division</label>
+                        <select class="form-input">
+                            <option>Dropdown</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">
+                            <input type="checkbox" checked> Supplier Name
+                        </label>
+                        <input type="text" class="form-input" value="XXXXXXXXXXXXX LTD." id="supplierInput">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">
+                                <input type="checkbox" checked> Invoice number
+                            </label>
+                            <input type="text" class="form-input" value="XX123456" id="invoiceNumberInput">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">
+                                <input type="checkbox"> Supplier number
+                            </label>
+                            <input type="text" class="form-input" placeholder="example.email@gmail.com">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">
+                                <input type="checkbox" checked> Invoice Date
+                            </label>
+                            <input type="text" class="form-input" value="07112025" id="dateInput">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">🔍</label>
+                            <input type="text" class="form-input">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">
+                                <input type="checkbox" checked> Invoice Total amount
+                            </label>
+                            <input type="text" class="form-input" value="XXXXXXXXX" id="amountInput">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Payment terms</label>
+                            <input type="text" class="form-input" value="N30">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">
+                                <input type="checkbox"> PO number
+                            </label>
+                            <input type="text" class="form-input" value="XXXXXXXXXXX">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Payment method</label>
+                            <input type="text" class="form-input" value="XXX">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Exchange rate</label>
+                        <input type="text" class="form-input" value="1">
+                    </div>
+
+                    <div class="line-items-section">
+                        <label class="form-label" style="margin-bottom: 10px;">Line Items</label>
+                        <table class="line-items-table">
+                            <thead>
+                                <tr>
+                                    <th style="width: 40px;"><input type="checkbox"></th>
+                                    <th>Item number</th>
+                                    <th>Quantity</th>
+                                    <th>Unit price</th>
+                                    <th>Gross price</th>
+                                </tr>
+                            </thead>
+                            <tbody id="lineItemsBody">
+                                <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td><input type="text" value=""></td>
+                                    <td><input type="text" value=""></td>
+                                    <td><input type="text" value=""></td>
+                                    <td><input type="text" value=""></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td><input type="text" value=""></td>
+                                    <td><input type="text" value=""></td>
+                                    <td><input type="text" value=""></td>
+                                    <td><input type="text" value=""></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td><input type="text" value=""></td>
+                                    <td><input type="text" value=""></td>
+                                    <td><input type="text" value=""></td>
+                                    <td><input type="text" value=""></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn-large btn-cancel" onclick="closeModal()">Cancel</button>
+                <button class="btn-large btn-submit" onclick="validateAndClose()">Validate</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="app-container">
+        <header class="header">
+            <div class="logo">
+                <div class="logo-icon">◈</div>
+                App Name
+            </div>
+            <nav class="nav">
+                <div class="nav-item active">
+                    <span>📄</span>
+                    <span>Invoice Process</span>
+                </div>
+                <div class="nav-item">
+                    <span>🔄</span>
+                    <span>Processing History</span>
+                </div>
+                <div class="settings-icon">
+                    <span>⚙️</span>
+                </div>
+            </nav>
+        </header>
+
+        <div class="content-grid">
+            <div class="card">
+                <div class="upload-zone" id="uploadZone">
+                    <div class="upload-icon">☁️</div>
+                    <div style="font-size: 14px; font-weight: 600; margin-bottom: 6px;">
+                        Drag & drop your files here
+                    </div>
+                    <div style="color: rgba(255, 255, 255, 0.6); font-size: 11px;">
+                        or click to browse
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="invoice-preview" id="previewCard">
+                    <div class="scan-line" id="scanLine"></div>
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 400'%3E%3Crect fill='%23ffffff' width='300' height='400'/%3E%3Ctext x='150' y='50' text-anchor='middle' font-family='Arial' font-size='32' font-weight='bold' fill='%23333'>INVOICE%3C/text%3E%3Cline x1='30' y1='80' x2='270' y2='80' stroke='%23ddd' stroke-width='2'/%3E%3Ctext x='30' y='110' font-family='Arial' font-size='12' fill='%23666'>Invoice Date: 11/07/2025%3C/text%3E%3Ctext x='30' y='130' font-family='Arial' font-size='12' fill='%23666'>Invoice No: INV-2025-001%3C/text%3E%3Crect x='30' y='150' width='240' height='150' fill='%23f5f5f5' stroke='%23ddd'/%3E%3Ctext x='40' y='180' font-family='Arial' font-size='11' fill='%23333'>Item 1............................$50.00%3C/text%3E%3Ctext x='40' y='200' font-family='Arial' font-size='11' fill='%23333'>Item 2............................$75.00%3C/text%3E%3Ctext x='40' y='220' font-family='Arial' font-size='11' fill='%23333'>Item 3............................$25.00%3C/text%3E%3Cline x1='30' y1='320' x2='270' y2='320' stroke='%23333' stroke-width='2'/%3E%3Ctext x='30' y='345' font-family='Arial' font-size='14' font-weight='bold' fill='%23333'>Total: $150.00%3C/text%3E%3C/svg%3E" alt="Invoice Preview" class="invoice-img" id="invoiceImg">
+                    <div class="zoom-controls">
+                        <button class="zoom-btn">🔍</button>
+                        <button class="zoom-btn">🔎</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card review-panel">
+                <h3>Review Errors</h3>
+                <p class="review-text" id="reviewText">
+                    Review the details extracted by OCR from the document. Verify accuracy of invoice numbers, dates, supplier names, and line items before validation.
+                </p>
+            </div>
+        </div>
+
+        <div class="documents-section">
+            <h2 class="section-header">Document Uploaded</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Uploaded Files</th>
+                            <th>Date/Time</th>
+                            <th>Extraction Status</th>
+                            <th>Validation Status</th>
+                            <th>Supplier Name</th>
+                            <th>Invoice #</th>
+                            <th>Invoice header</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                        <tr>
+                            <td><span class="file-icon">📄</span>invoice_2023_001.pdf (1.2 MB)</td>
+                            <td>11/7/25 16:25</td>
+                            <td><span class="status-badge status-extracted">✓ Extracted</span></td>
+                            <td><span class="status-badge status-validated">✓ Validated</span></td>
+                            <td>RELIANCE INDUSTRIES PVT LTD</td>
+                            <td>RL/6953</td>
+                            <td><span class="invoice-number"><span class="checkmark">✓</span> 24552</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="file-icon">📄</span>invoice_2023_002.pdf (1.2 MB)</td>
+                            <td>11/7/25 16:28</td>
+                            <td><span class="status-badge status-extracted">✓ Extracted</span></td>
+                            <td><span class="status-badge status-validated">✓ Validated</span></td>
+                            <td>VOLVO CONSTRUCTION</td>
+                            <td>IV23154</td>
+                            <td><button class="btn btn-correct"><span>Correct Errors</span></button></td>
+                        </tr>
+                        <tr>
+                            <td><span class="file-icon">📄</span>invoice_2023_003.pdf (1.2 MB)</td>
+                            <td>11/7/25 16:32</td>
+                            <td><span class="status-badge status-extracted">✓ Extracted</span></td>
+                            <td><button class="btn btn-validate"><span>Validate</span></button></td>
+                            <td>TECH SOLUTIONS INC</td>
+                            <td>TS-8821</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td><span class="file-icon">📄</span>invoice_2023_004.pdf (1.2 MB)</td>
+                            <td>11/7/25 16:25</td>
+                            <td><span class="status-badge status-processing">⏳ Processing</span></td>
+                            <td><span class="status-badge status-pending">● Pending</span></td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td><span class="file-icon">📄</span>invoice_2023_005.pdf (1.2 MB)</td>
+                            <td>11/7/25 16:28</td>
+                            <td><span class="status-badge status-processing">⏳ Processing</span></td>
+                            <td><span class="status-badge status-pending">● Pending</span></td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentNewRow = null;
+
+        // Create floating particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            for (let i = 0; i < 30; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 10 + 's';
+                particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Automated demo workflow
+        let demoRunning = false;
+
+        async function runDemo() {
+            if (demoRunning) return;
+            demoRunning = true;
+
+            await simulateFileDrop();
+            await delay(1000);
+            await simulateUpload();
+            await delay(1500);
+            await simulateOCRScanning();
+            await delay(1000);
+            await simulateExtraction();
+            await delay(1500);
+            await simulateValidationClick();
+            
+            demoRunning = false;
+            // Restart demo after a pause
+            setTimeout(runDemo, 8000);
+        }
+
+        function delay(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        // Simulate file being dragged and dropped
+        async function simulateFileDrop() {
+            const animatedFile = document.getElementById('animatedFile');
+            const uploadZone = document.getElementById('uploadZone');
+            const uploadRect = uploadZone.getBoundingClientRect();
+
+            animatedFile.style.left = '20px';
+            animatedFile.style.top = '-100px';
+            animatedFile.style.opacity = '1';
+            animatedFile.style.transform = 'scale(1)';
+
+            await delay(100);
+
+            animatedFile.style.transition = 'all 1.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
+            animatedFile.style.left = uploadRect.left + uploadRect.width/2 - 40 + 'px';
+            animatedFile.style.top = uploadRect.top + uploadRect.height/2 - 50 + 'px';
+            
+            uploadZone.classList.add('drag-over');
+
+            await delay(1500);
+            
+            animatedFile.style.transform = 'scale(0.5)';
+            animatedFile.style.opacity = '0';
+            
+            await delay(300);
+            uploadZone.classList.remove('drag-over');
+        }
+
+        // Simulate upload process
+        async function simulateUpload() {
+            const uploadZone = document.getElementById('uploadZone');
+            uploadZone.innerHTML = `
+                <div style="font-size: 36px; animation: spin 1s linear infinite;">⏳</div>
+                <div style="margin-top: 15px; font-weight: 600; font-size: 13px;">Uploading Document...</div>
+                <div class="progress-bar"><div class="progress-fill" id="uploadProgress"></div></div>
+            `;
+
+            const progressBar = document.getElementById('uploadProgress');
+            for (let i = 0; i <= 100; i += 5) {
+                progressBar.style.width = i + '%';
+                await delay(50);
+            }
+
+            await delay(300);
+
+            uploadZone.innerHTML = `
+                <div style="font-size: 36px; color: #22c55e;">✓</div>
+                <div style="margin-top: 15px; color: #22c55e; font-weight: 600; font-size: 13px;">Upload Complete!</div>
+            `;
+
+            // Add new row to table
+            addNewRow();
+
+            await delay(800);
+
+            uploadZone.innerHTML = `
+                <div class="upload-icon">☁️</div>
+                <div style="font-size: 14px; font-weight: 600; margin-bottom: 6px;">
+                    Drag & drop your files here
+                </div>
+                <div style="color: rgba(255, 255, 255, 0.6); font-size: 11px;">
+                    or click to browse
+                </div>
+            `;
+        }
+
+        // Add new row to table
+        function addNewRow() {
+            const tableBody = document.getElementById('tableBody');
+            const newRow = document.createElement('tr');
+            newRow.innerHTML = `
+                <td><span class="file-icon">📄</span>invoice_2023_new.pdf (1.2 MB)</td>
+                <td>${new Date().toLocaleString('en-US', { year: '2-digit', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', hour12: false })}</td>
+                <td><span class="status-badge status-pending">● Pending</span></td>
+                <td><span class="status-badge status-pending">● Pending</span></td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            `;
+            newRow.style.opacity = '0';
+            newRow.style.transform = 'translateY(-20px)';
+            tableBody.appendChild(newRow);
+            
+            currentNewRow = newRow;
+
+            setTimeout(() => {
+                newRow.style.transition = 'all 0.5s ease-out';
+                newRow.style.opacity = '1';
+                newRow.style.transform = 'translateY(0)';
+            }, 100);
+        }
+
+        // Simulate OCR scanning
+        async function simulateOCRScanning() {
+            const previewCard = document.getElementById('previewCard');
+            const scanLine = document.getElementById('scanLine');
+            const reviewText = document.getElementById('reviewText');
+
+            const indicator = document.createElement('div');
+            indicator.className = 'process-indicator';
+            indicator.textContent = 'OCR Scanning...';
+            previewCard.appendChild(indicator);
+
+            scanLine.classList.add('active');
+
+            reviewText.innerHTML = `
+                <div style="color: #fbbf24; font-weight: 600; margin-bottom: 8px; font-size: 12px;">
+                    🔍 Scanning document with OCR...
+                </div>
+                <div style="color: rgba(255, 255, 255, 0.7); line-height: 1.5; font-size: 11px;">
+                    Detecting text, numbers, tables, and invoice structure...
+                </div>
+            `;
+
+            if (currentNewRow) {
+                currentNewRow.classList.add('highlight');
+            }
+
+            await delay(2000);
+
+            scanLine.classList.remove('active');
+            indicator.remove();
+        }
+
+        // Simulate data extraction
+        async function simulateExtraction() {
+            const reviewText = document.getElementById('reviewText');
+
+            reviewText.innerHTML = `
+                <div style="color: #fbbf24; font-weight: 600; margin-bottom: 8px; font-size: 12px;">
+                    ⚙️ Extracting data fields...
+                </div>
+                <div style="color: rgba(255, 255, 255, 0.7); line-height: 1.5; font-size: 11px;">
+                    Parsing invoice number, date, supplier, line items...
+                </div>
+            `;
+
+            if (!currentNewRow) return;
+
+            await delay(800);
+
+            const extractionCell = currentNewRow.cells[2];
+            extractionCell.innerHTML = '<span class="status-badge status-processing">⏳ Processing</span>';
+
+            await delay(1000);
+
+            extractionCell.innerHTML = '<span class="status-badge status-extracted">✓ Extracted</span>';
+
+            const supplierCell = currentNewRow.cells[4];
+            supplierCell.textContent = 'ACME CORPORATION';
+
+            const invoiceCell = currentNewRow.cells[5];
+            invoiceCell.textContent = 'AC-9912';
+
+            await delay(500);
+
+            currentNewRow.classList.remove('highlight');
+
+            reviewText.innerHTML = `
+                <div style="color: #22c55e; font-weight: 600; margin-bottom: 8px; font-size: 12px;">
+                    ✓ Data extracted successfully
+                </div>
+                <div style="color: rgba(255, 255, 255, 0.7); line-height: 1.5; font-size: 11px;">
+                    Click "Validate" button to review extracted fields
+                </div>
+            `;
+
+            // Add validate button
+            const validateCell = currentNewRow.cells[3];
+            validateCell.innerHTML = '<button class="btn btn-validate" onclick="openModal()"><span>Validate</span></button>';
+        }
+
+        // Simulate validation button click
+        async function simulateValidationClick() {
+            const reviewText = document.getElementById('reviewText');
+
+            reviewText.innerHTML = `
+                <div style="color: #8b5cf6; font-weight: 600; margin-bottom: 8px; font-size: 12px;">
+                    👆 Opening validation form...
+                </div>
+                <div style="color: rgba(255, 255, 255, 0.7); line-height: 1.5; font-size: 11px;">
+                    Review and validate extracted data fields
+                </div>
+            `;
+
+            await delay(1000);
+
+            openModal();
+        }
+
+        // Open validation modal
+        function openModal() {
+            const modal = document.getElementById('validationModal');
+            modal.classList.add('active');
+            
+            setTimeout(() => {
+                highlightFields();
+            }, 500);
+        }
+
+        // Highlight extracted fields
+        async function highlightFields() {
+            const fields = [
+                'supplierInput',
+                'invoiceNumberInput',
+                'dateInput',
+                'amountInput'
+            ];
+
+            for (const fieldId of fields) {
+                const field = document.getElementById(fieldId);
+                if (field) {
+                    field.classList.add('highlighted');
+                    await delay(400);
+                }
+            }
+
+            await delay(2000);
+
+            // Remove highlights
+            fields.forEach(fieldId => {
+                const field = document.getElementById(fieldId);
+                if (field) {
+                    field.classList.remove('highlighted');
+                }
+            });
+        }
+
+        // Close modal
+        function closeModal() {
+            const modal = document.getElementById('validationModal');
+            modal.classList.remove('active');
+        }
+
+        // Validate and close
+        async function validateAndClose() {
+            const reviewText = document.getElementById('reviewText');
+
+            reviewText.innerHTML = `
+                <div style="color: #22c55e; font-weight: 600; margin-bottom: 8px; font-size: 12px;">
+                    ✓ Validation complete!
+                </div>
+                <div style="color: rgba(255, 255, 255, 0.7); line-height: 1.5; font-size: 11px;">
+                    All data validated successfully. Invoice ready for processing.
+                </div>
+            `;
+
+            if (currentNewRow) {
+                const validationCell = currentNewRow.cells[3];
+                validationCell.innerHTML = '<span class="status-badge status-validated">✓ Validated</span>';
+
+                const headerCell = currentNewRow.cells[6];
+                headerCell.innerHTML = '<span class="invoice-number"><span class="checkmark">✓</span> 24552</span>';
+
+                currentNewRow.classList.add('highlight');
+                await delay(600);
+                currentNewRow.classList.remove('highlight');
+            }
+
+            closeModal();
+        }
+
+        // Initialize
+        createParticles();
+
+        // Start the demo after page loads
+        setTimeout(() => {
+            runDemo();
+        }, 2000);
+    </script>
+</body>
+</html>
