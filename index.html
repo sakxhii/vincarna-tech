@@ -49,10 +49,175 @@
           </div>
         </div>
         <div class="hero-video">
-          <video autoplay muted loop playsinline>
-            <source src="Invoice_Digitization_and_ERP_Integration_Workflow.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
+          <div class="demo-window">
+            <!-- Floating Particles Container -->
+            <div id="particles" class="particles"></div>
+
+            <!-- Window Header -->
+            <div class="window-header">
+              <div class="window-controls">
+                <div class="window-control-btn"></div>
+                <div class="window-control-btn"></div>
+                <div class="window-control-btn"></div>
+              </div>
+              <div class="window-title">Invoice Processor - Demo</div>
+            </div>
+
+            <div class="app-container">
+              <!-- App Header -->
+              <header class="demo-header">
+                <div class="demo-logo">
+                  <div class="demo-logo-icon">◈</div>
+                  Vincarna Tech
+                </div>
+                <div class="demo-nav">
+                  <div class="demo-nav-item active">
+                    <span>📄</span>
+                    <span>Invoice Process</span>
+                  </div>
+                  <div class="demo-nav-item">
+                    <span>📊</span>
+                    <span>Processing History</span>
+                  </div>
+                  <div class="settings-icon">
+                    <span>⚙️</span>
+                  </div>
+                </div>
+              </header>
+
+              <div class="content-grid">
+                <div class="demo-card">
+                  <div class="upload-zone" id="uploadZone">
+                    <div class="upload-icon">☁️</div>
+                    <div style="font-size: 18px; font-weight: 600; margin-bottom: 8px; color: white;">Drag & drop your
+                      files
+                      here</div>
+                    <div style="color: rgba(255, 255, 255, 0.6);">or click to browse</div>
+                  </div>
+                </div>
+
+                <div class="demo-card">
+                  <div class="invoice-preview" id="previewCard">
+                    <div class="scan-line" id="scanLine"></div>
+                    <img
+                      src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 400'%3E%3Crect fill='%23ffffff' width='300' height='400'/%3E%3Ctext x='150' y='50' text-anchor='middle' font-family='Arial' font-size='32' font-weight='bold' fill='%23333'>INVOICE%3C/text%3E%3Cline x1='30' y1='80' x2='270' y2='80' stroke='%23ddd' stroke-width='2'/%3E%3Ctext x='30' y='110' font-family='Arial' font-size='12' fill='%23666'>Invoice Date: 11/07/2025%3C/text%3E%3Ctext x='30' y='130' font-family='Arial' font-size='12' fill='%23666'>Invoice No: INV-2025-001%3C/text%3E%3Crect x='30' y='150' width='240' height='150' fill='%23f5f5f5' stroke='%23ddd'/%3E%3Ctext x='40' y='180' font-family='Arial' font-size='11' fill='%23333'>Item 1............................$50.00%3C/text%3E%3Ctext x='40' y='200' font-family='Arial' font-size='11' fill='%23333'>Item 2............................$75.00%3C/text%3E%3Ctext x='40' y='220' font-family='Arial' font-size='11' fill='%23333'>Item 3............................$25.00%3C/text%3E%3Cline x1='30' y1='320' x2='270' y2='320' stroke='%23333' stroke-width='2'/%3E%3Ctext x='30' y='345' font-family='Arial' font-size='14' font-weight='bold' fill='%23333'>Total: $150.00%3C/text%3E%3C/svg%3E"
+                      alt="Invoice Preview" class="invoice-img" id="invoiceImg">
+                    <div class="zoom-controls">
+                      <button class="zoom-btn">🔍</button>
+                      <button class="zoom-btn">🔎</button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="demo-card review-panel">
+                  <h3>Review Errors</h3>
+                  <p class="review-text" id="reviewText">Review the details extracted by OCR from the document. Verify
+                    accuracy of invoice numbers, tables, names, and line item validation.</p>
+                </div>
+              </div>
+
+              <div class="documents-section">
+                <h2 class="section-header">Document Uploaded</h2>
+                <div class="table-container">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Uploaded Files</th>
+                        <th>Date/Time</th>
+                        <th>Extraction Status</th>
+                        <th>Validation Status</th>
+                        <th>Supplier Name</th>
+                        <th>Invoice #</th>
+                        <th>Invoice header</th>
+                      </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                      <tr>
+                        <td data-label="Uploaded Files"><span class="file-icon">📄</span>invoice_2023_001.pdf (1.2 MB)
+                        </td>
+                        <td data-label="Date/Time">11/7/25 16:25</td>
+                        <td data-label="Extraction Status"><span class="status-badge status-extracted">✓
+                            Extracted</span>
+                        </td>
+                        <td data-label="Validation Status"><span class="status-badge status-validated">✓
+                            Validated</span>
+                        </td>
+                        <td data-label="Supplier Name">RELIANCE INDUSTRIES PVT LTD</td>
+                        <td data-label="Invoice #">RL/6953</td>
+                        <td data-label="Invoice header"><span class="invoice-number"><span class="checkmark">✓</span>
+                            24552</span></td>
+                      </tr>
+                      <tr>
+                        <td data-label="Uploaded Files"><span class="file-icon">📄</span>invoice_2023_002.pdf (1.2 MB)
+                        </td>
+                        <td data-label="Date/Time">11/7/25 16:28</td>
+                        <td data-label="Extraction Status"><span class="status-badge status-extracted">✓
+                            Extracted</span>
+                        </td>
+                        <td data-label="Validation Status"><span class="status-badge status-validated">✓
+                            Validated</span>
+                        </td>
+                        <td data-label="Supplier Name">VOLVO CONSTRUCTION</td>
+                        <td data-label="Invoice #">IV23154</td>
+                        <td data-label="Invoice header"><button class="btn btn-correct"
+                            onclick="openModal()"><span>Correct
+                              Errors</span></button></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Animated File Icon for Drag Effect -->
+          <div id="animatedFile" class="animated-file">📄</div>
+
+          <!-- Validation Modal -->
+          <div class="modal-overlay" id="validationModal">
+            <div class="modal-content">
+              <div class="modal-header">
+                <div class="modal-title">
+                  <div class="app-logo">◈</div>
+                  <h2>Validation Interface</h2>
+                </div>
+                <button class="close-btn" onclick="closeModal()">×</button>
+              </div>
+              <div class="modal-body">
+                <div class="invoice-section">
+                  <img
+                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 400'%3E%3Crect fill='%23ffffff' width='300' height='400'/%3E%3Ctext x='150' y='50' text-anchor='middle' font-family='Arial' font-size='32' font-weight='bold' fill='%23333'>INVOICE%3C/text%3E%3Cline x1='30' y1='80' x2='270' y2='80' stroke='%23ddd' stroke-width='2'/%3E%3Ctext x='30' y='110' font-family='Arial' font-size='12' fill='%23666'>Invoice Date: 11/07/2025%3C/text%3E%3Ctext x='30' y='130' font-family='Arial' font-size='12' fill='%23666'>Invoice No: INV-2025-001%3C/text%3E%3Crect x='30' y='150' width='240' height='150' fill='%23f5f5f5' stroke='%23ddd'/%3E%3Ctext x='40' y='180' font-family='Arial' font-size='11' fill='%23333'>Item 1............................$50.00%3C/text%3E%3Ctext x='40' y='200' font-family='Arial' font-size='11' fill='%23333'>Item 2............................$75.00%3C/text%3E%3Ctext x='40' y='220' font-family='Arial' font-size='11' fill='%23333'>Item 3............................$25.00%3C/text%3E%3Cline x1='30' y1='320' x2='270' y2='320' stroke='%23333' stroke-width='2'/%3E%3Ctext x='30' y='345' font-family='Arial' font-size='14' font-weight='bold' fill='%23333'>Total: $150.00%3C/text%3E%3C/svg%3E"
+                    alt="Scanned Invoice" class="invoice-preview-large">
+                </div>
+                <div class="form-section">
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label class="form-label">Vendor Name ⚠️</label>
+                      <input type="text" class="form-input" value="VOLO CONSTRICTION" id="supplierInput">
+                    </div>
+                    <div class="form-group">
+                      <label class="form-label">Invoice Date</label>
+                      <input type="text" class="form-input" value="11/07/2025" id="dateInput">
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label class="form-label">Invoice Number</label>
+                      <input type="text" class="form-input" value="IV23999" id="invoiceNumberInput">
+                    </div>
+                    <div class="form-group">
+                      <label class="form-label">Total Amount</label>
+                      <input type="text" class="form-input" value="$4,500.00" id="amountInput">
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button class="btn-large btn-cancel" onclick="closeModal()">Cancel</button>
+                    <button class="btn-large btn-submit" onclick="validateAndClose()">Validate & Save</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -196,177 +361,7 @@
     </div>
   </section>
 
-  <!-- OPERATOR INTERFACE -->
-  <section id="operator" class="operator-section">
-    <div class="container">
-      <div class="section-head">
-        <h2>Vincarna Operator Interface</h2>
-        <p>Intelligent document processing with human oversight</p>
-      </div>
 
-      <div class="demo-window">
-        <!-- Floating Particles Container -->
-        <div id="particles" class="particles"></div>
-
-        <!-- Window Header -->
-        <div class="window-header">
-          <div class="window-controls">
-            <div class="window-control-btn"></div>
-            <div class="window-control-btn"></div>
-            <div class="window-control-btn"></div>
-          </div>
-          <div class="window-title">Invoice Processor - Demo</div>
-        </div>
-
-        <div class="app-container">
-          <!-- App Header -->
-          <header class="demo-header">
-            <div class="demo-logo">
-              <div class="demo-logo-icon">◈</div>
-              Vincarna Tech
-            </div>
-            <div class="demo-nav">
-              <div class="demo-nav-item active">
-                <span>📄</span>
-                <span>Invoice Process</span>
-              </div>
-              <div class="demo-nav-item">
-                <span>📊</span>
-                <span>Processing History</span>
-              </div>
-              <div class="settings-icon">
-                <span>⚙️</span>
-              </div>
-            </div>
-          </header>
-
-          <div class="content-grid">
-            <div class="demo-card">
-              <div class="upload-zone" id="uploadZone">
-                <div class="upload-icon">☁️</div>
-                <div style="font-size: 18px; font-weight: 600; margin-bottom: 8px; color: white;">Drag & drop your files
-                  here</div>
-                <div style="color: rgba(255, 255, 255, 0.6);">or click to browse</div>
-              </div>
-            </div>
-
-            <div class="demo-card">
-              <div class="invoice-preview" id="previewCard">
-                <div class="scan-line" id="scanLine"></div>
-                <img
-                  src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 400'%3E%3Crect fill='%23ffffff' width='300' height='400'/%3E%3Ctext x='150' y='50' text-anchor='middle' font-family='Arial' font-size='32' font-weight='bold' fill='%23333'>INVOICE%3C/text%3E%3Cline x1='30' y1='80' x2='270' y2='80' stroke='%23ddd' stroke-width='2'/%3E%3Ctext x='30' y='110' font-family='Arial' font-size='12' fill='%23666'>Invoice Date: 11/07/2025%3C/text%3E%3Ctext x='30' y='130' font-family='Arial' font-size='12' fill='%23666'>Invoice No: INV-2025-001%3C/text%3E%3Crect x='30' y='150' width='240' height='150' fill='%23f5f5f5' stroke='%23ddd'/%3E%3Ctext x='40' y='180' font-family='Arial' font-size='11' fill='%23333'>Item 1............................$50.00%3C/text%3E%3Ctext x='40' y='200' font-family='Arial' font-size='11' fill='%23333'>Item 2............................$75.00%3C/text%3E%3Ctext x='40' y='220' font-family='Arial' font-size='11' fill='%23333'>Item 3............................$25.00%3C/text%3E%3Cline x1='30' y1='320' x2='270' y2='320' stroke='%23333' stroke-width='2'/%3E%3Ctext x='30' y='345' font-family='Arial' font-size='14' font-weight='bold' fill='%23333'>Total: $150.00%3C/text%3E%3C/svg%3E"
-                  alt="Invoice Preview" class="invoice-img" id="invoiceImg">
-                <div class="zoom-controls">
-                  <button class="zoom-btn">🔍</button>
-                  <button class="zoom-btn">🔎</button>
-                </div>
-              </div>
-            </div>
-
-            <div class="demo-card review-panel">
-              <h3>Review Errors</h3>
-              <p class="review-text" id="reviewText">Review the details extracted by OCR from the document. Verify
-                accuracy of invoice numbers, tables, names, and line item validation.</p>
-            </div>
-          </div>
-
-          <div class="documents-section">
-            <h2 class="section-header">Document Uploaded</h2>
-            <div class="table-container">
-              <table>
-                <thead>
-                  <tr>
-                    <th>Uploaded Files</th>
-                    <th>Date/Time</th>
-                    <th>Extraction Status</th>
-                    <th>Validation Status</th>
-                    <th>Supplier Name</th>
-                    <th>Invoice #</th>
-                    <th>Invoice header</th>
-                  </tr>
-                </thead>
-                <tbody id="tableBody">
-                  <tr>
-                    <td data-label="Uploaded Files"><span class="file-icon">📄</span>invoice_2023_001.pdf (1.2 MB)</td>
-                    <td data-label="Date/Time">11/7/25 16:25</td>
-                    <td data-label="Extraction Status"><span class="status-badge status-extracted">✓ Extracted</span>
-                    </td>
-                    <td data-label="Validation Status"><span class="status-badge status-validated">✓ Validated</span>
-                    </td>
-                    <td data-label="Supplier Name">RELIANCE INDUSTRIES PVT LTD</td>
-                    <td data-label="Invoice #">RL/6953</td>
-                    <td data-label="Invoice header"><span class="invoice-number"><span class="checkmark">✓</span>
-                        24552</span></td>
-                  </tr>
-                  <tr>
-                    <td data-label="Uploaded Files"><span class="file-icon">📄</span>invoice_2023_002.pdf (1.2 MB)</td>
-                    <td data-label="Date/Time">11/7/25 16:28</td>
-                    <td data-label="Extraction Status"><span class="status-badge status-extracted">✓ Extracted</span>
-                    </td>
-                    <td data-label="Validation Status"><span class="status-badge status-validated">✓ Validated</span>
-                    </td>
-                    <td data-label="Supplier Name">VOLVO CONSTRUCTION</td>
-                    <td data-label="Invoice #">IV23154</td>
-                    <td data-label="Invoice header"><button class="btn btn-correct" onclick="openModal()"><span>Correct
-                          Errors</span></button></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Animated File Icon for Drag Effect -->
-      <div id="animatedFile" class="animated-file">📄</div>
-
-      <!-- Validation Modal -->
-      <div class="modal-overlay" id="validationModal">
-        <div class="modal-content">
-          <div class="modal-header">
-            <div class="modal-title">
-              <div class="app-logo">◈</div>
-              <h2>Validation Interface</h2>
-            </div>
-            <button class="close-btn" onclick="closeModal()">×</button>
-          </div>
-          <div class="modal-body">
-            <div class="invoice-section">
-              <img
-                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 400'%3E%3Crect fill='%23ffffff' width='300' height='400'/%3E%3Ctext x='150' y='50' text-anchor='middle' font-family='Arial' font-size='32' font-weight='bold' fill='%23333'>INVOICE%3C/text%3E%3Cline x1='30' y1='80' x2='270' y2='80' stroke='%23ddd' stroke-width='2'/%3E%3Ctext x='30' y='110' font-family='Arial' font-size='12' fill='%23666'>Invoice Date: 11/07/2025%3C/text%3E%3Ctext x='30' y='130' font-family='Arial' font-size='12' fill='%23666'>Invoice No: INV-2025-001%3C/text%3E%3Crect x='30' y='150' width='240' height='150' fill='%23f5f5f5' stroke='%23ddd'/%3E%3Ctext x='40' y='180' font-family='Arial' font-size='11' fill='%23333'>Item 1............................$50.00%3C/text%3E%3Ctext x='40' y='200' font-family='Arial' font-size='11' fill='%23333'>Item 2............................$75.00%3C/text%3E%3Ctext x='40' y='220' font-family='Arial' font-size='11' fill='%23333'>Item 3............................$25.00%3C/text%3E%3Cline x1='30' y1='320' x2='270' y2='320' stroke='%23333' stroke-width='2'/%3E%3Ctext x='30' y='345' font-family='Arial' font-size='14' font-weight='bold' fill='%23333'>Total: $150.00%3C/text%3E%3C/svg%3E"
-                alt="Scanned Invoice" class="invoice-preview-large">
-            </div>
-            <div class="form-section">
-              <div class="form-row">
-                <div class="form-group">
-                  <label class="form-label">Vendor Name ⚠️</label>
-                  <input type="text" class="form-input" value="VOLO CONSTRICTION" id="supplierInput">
-                </div>
-                <div class="form-group">
-                  <label class="form-label">Invoice Date</label>
-                  <input type="text" class="form-input" value="11/07/2025" id="dateInput">
-                </div>
-              </div>
-              <div class="form-row">
-                <div class="form-group">
-                  <label class="form-label">Invoice Number</label>
-                  <input type="text" class="form-input" value="IV23999" id="invoiceNumberInput">
-                </div>
-                <div class="form-group">
-                  <label class="form-label">Total Amount</label>
-                  <input type="text" class="form-input" value="$4,500.00" id="amountInput">
-                </div>
-              </div>
-              <div class="modal-footer">
-                <button class="btn-large btn-cancel" onclick="closeModal()">Cancel</button>
-                <button class="btn-large btn-submit" onclick="validateAndClose()">Validate & Save</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
 
   <!-- FEATURES -->
@@ -996,8 +991,8 @@
         });
       }, { threshold: 0.5 });
 
-      const operatorSection = document.querySelector('.operator-section');
-      if (operatorSection) observer.observe(operatorSection);
+      const demoWindow = document.querySelector('.demo-window');
+      if (demoWindow) observer.observe(demoWindow);
     });
 
   </script>
