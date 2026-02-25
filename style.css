@@ -180,10 +180,13 @@ nav.scrolled {
 
 /* HERO */
 .hero {
-  padding: 20px 0 40px;
+  padding: 15px 0 30px;
   background: linear-gradient(135deg, #f0f7ff 0%, #ffffff 100%);
   position: relative;
   overflow: hidden;
+  min-height: calc(100vh - 70px);
+  display: flex;
+  align-items: center;
 }
 
 
@@ -205,9 +208,9 @@ nav .container {
 }
 
 .hero h1 {
-  font-size: 2.8rem;
+  font-size: 2.5rem;
   line-height: 1.1;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   background: var(--gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -216,8 +219,8 @@ nav .container {
 
 .hero p {
   color: var(--dark-light);
-  margin-bottom: 24px;
-  font-size: 1.1rem;
+  margin-bottom: 20px;
+  font-size: 1.05rem;
   max-width: 800px;
 }
 
@@ -235,7 +238,7 @@ nav .container {
 
 .hero-video {
   width: 100%;
-  max-width: 800px;
+  max-width: 900px;
   position: relative;
 }
 
@@ -619,9 +622,24 @@ section {
 .app-container {
   max-width: 1600px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 15px;
+  /* Reduced from 20px */
   position: relative;
   z-index: 1;
+}
+
+.demo-window .app-container {
+  max-height: 550px;
+  overflow-y: auto;
+}
+
+.demo-window .app-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.demo-window .app-container::-webkit-scrollbar-thumb {
+  background: rgba(139, 92, 246, 0.3);
+  border-radius: 3px;
 }
 
 /* Header from demo */
@@ -790,7 +808,7 @@ section {
 
 /* Upload zone */
 .upload-zone {
-  min-height: 300px;
+  min-height: 220px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -839,7 +857,7 @@ section {
   align-items: center;
   justify-content: center;
   position: relative;
-  min-height: 300px;
+  min-height: 220px;
 }
 
 .invoice-img {
@@ -1612,13 +1630,14 @@ footer {
   }
 
   .hero h1 {
-    font-size: 3.2rem;
+    font-size: 2.8rem;
   }
 
   .hero-content {
     flex-direction: row;
     text-align: left;
     align-items: center;
+    gap: 40px;
   }
 
   .hero-text {
@@ -1628,7 +1647,7 @@ footer {
   }
 
   .hero-video {
-    flex: 1;
+    flex: 1.2;
   }
 
   .hero-buttons {
@@ -1690,7 +1709,7 @@ footer {
   }
 
   .hero h1 {
-    font-size: 3.5rem;
+    font-size: 3rem;
   }
 
   .section-head h2 {
@@ -1735,7 +1754,7 @@ footer {
 /* Large Desktop (1200px and up) */
 @media (min-width: 1200px) {
   .hero h1 {
-    font-size: 4rem;
+    font-size: 3.2rem;
   }
 
   .hero-content {
@@ -2834,12 +2853,12 @@ tbody tr.highlight {
 }
 
 .modal-content {
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 20px;
-  padding: 30px;
-  max-width: 1400px;
+  background: rgba(255, 255, 255, 0.98);
+  border-radius: 16px;
+  padding: 20px;
+  max-width: 900px;
   width: 100%;
-  max-height: 90vh;
+  max-height: 85vh;
   overflow-y: auto;
   position: relative;
   animation: slideUp 0.4s ease-out;
@@ -2864,9 +2883,9 @@ tbody tr.highlight {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 30px;
-  padding-bottom: 20px;
-  border-bottom: 2px solid #e5e7eb;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #e5e7eb;
   background: transparent;
 }
 
@@ -2885,10 +2904,10 @@ tbody tr.highlight {
 }
 
 .app-logo {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   background: linear-gradient(135deg, #8b5cf6, #6366f1);
-  border-radius: 12px;
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2918,19 +2937,18 @@ tbody tr.highlight {
 
 .modal-body {
   display: flex;
-  gap: 40px;
+  gap: 25px;
   flex-direction: row;
-  padding: 10px;
+  padding: 0;
 }
 
 .invoice-section {
-  flex: 0 0 35%;
-  /* Fixed smaller width to make invoice smaller */
+  flex: 0 0 40%;
   background: #f8fafc;
-  border-radius: 12px;
+  border-radius: 10px;
   overflow: hidden;
   border: 1px solid #e2e8f0;
-  height: 500px;
+  height: 380px;
   box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.03);
 }
 
@@ -3049,12 +3067,12 @@ select {
 }
 
 .modal-footer {
-  margin-top: 30px;
-  padding-top: 20px;
+  margin-top: 20px;
+  padding-top: 15px;
   border-top: 1px solid #e5e7eb;
   display: flex;
   justify-content: flex-end;
-  gap: 15px;
+  gap: 12px;
   background: transparent;
 }
 
@@ -3173,9 +3191,11 @@ select {
   }
 
   .modal-content {
-    width: 100% !important;
-    max-width: 100% !important;
-    border-radius: 0 !important;
+    width: 95% !important;
+    max-width: 500px !important;
+    border-radius: 12px !important;
+    padding: 15px !important;
+    max-height: 95vh !important;
   }
 
   /* Nav Fixes */
