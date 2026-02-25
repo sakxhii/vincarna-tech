@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -44,6 +45,7 @@
                 transform: translateY(-50px);
                 opacity: 0;
             }
+
             to {
                 transform: translateY(0);
                 opacity: 1;
@@ -118,6 +120,7 @@
                 opacity: 0;
                 transform: translateY(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -147,9 +150,12 @@
         }
 
         @keyframes shimmer {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: translateX(-100%);
             }
+
             50% {
                 transform: translateX(100%);
             }
@@ -193,9 +199,12 @@
         }
 
         @keyframes float {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: translateY(0px);
             }
+
             50% {
                 transform: translateY(-10px);
             }
@@ -328,9 +337,11 @@
             0% {
                 transform: scale(1);
             }
+
             50% {
                 transform: scale(1.02);
             }
+
             100% {
                 transform: scale(1);
             }
@@ -366,9 +377,12 @@
         }
 
         @keyframes pulse {
-            0%, 100% {
+
+            0%,
+            100% {
                 opacity: 1;
             }
+
             50% {
                 opacity: 0.6;
             }
@@ -476,12 +490,15 @@
                 transform: translateY(100vh) scale(0);
                 opacity: 0;
             }
+
             10% {
                 opacity: 1;
             }
+
             90% {
                 opacity: 1;
             }
+
             100% {
                 transform: translateY(-100px) scale(1);
                 opacity: 0;
@@ -539,8 +556,13 @@
         }
 
         @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
         }
 
         /* Demo badge */
@@ -585,6 +607,7 @@
                 top: 0;
                 opacity: 1;
             }
+
             100% {
                 top: 100%;
                 opacity: 0;
@@ -592,6 +615,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="particles" id="particles"></div>
     <div class="animated-file" id="animatedFile">📄</div>
@@ -634,7 +658,8 @@
             <div class="card">
                 <div class="invoice-preview" id="previewCard">
                     <div class="scan-line" id="scanLine"></div>
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 400'%3E%3Crect fill='%23ffffff' width='300' height='400'/%3E%3Ctext x='150' y='50' text-anchor='middle' font-family='Arial' font-size='32' font-weight='bold' fill='%23333'>INVOICE%3C/text%3E%3Cline x1='30' y1='80' x2='270' y2='80' stroke='%23ddd' stroke-width='2'/%3E%3Ctext x='30' y='110' font-family='Arial' font-size='12' fill='%23666'>Invoice Date: 11/07/2025%3C/text%3E%3Ctext x='30' y='130' font-family='Arial' font-size='12' fill='%23666'>Invoice No: INV-2025-001%3C/text%3E%3Crect x='30' y='150' width='240' height='150' fill='%23f5f5f5' stroke='%23ddd'/%3E%3Ctext x='40' y='180' font-family='Arial' font-size='11' fill='%23333'>Item 1............................$50.00%3C/text%3E%3Ctext x='40' y='200' font-family='Arial' font-size='11' fill='%23333'>Item 2............................$75.00%3C/text%3E%3Ctext x='40' y='220' font-family='Arial' font-size='11' fill='%23333'>Item 3............................$25.00%3C/text%3E%3Cline x1='30' y1='320' x2='270' y2='320' stroke='%23333' stroke-width='2'/%3E%3Ctext x='30' y='345' font-family='Arial' font-size='14' font-weight='bold' fill='%23333'>Total: $150.00%3C/text%3E%3C/svg%3E" alt="Invoice Preview" class="invoice-img" id="invoiceImg">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 400'%3E%3Crect fill='%23ffffff' width='300' height='400'/%3E%3Ctext x='150' y='50' text-anchor='middle' font-family='Arial' font-size='32' font-weight='bold' fill='%23333'>INVOICE%3C/text%3E%3Cline x1='30' y1='80' x2='270' y2='80' stroke='%23ddd' stroke-width='2'/%3E%3Ctext x='30' y='110' font-family='Arial' font-size='12' fill='%23666'>Invoice Date: 11/07/2025%3C/text%3E%3Ctext x='30' y='130' font-family='Arial' font-size='12' fill='%23666'>Invoice No: INV-2025-001%3C/text%3E%3Crect x='30' y='150' width='240' height='150' fill='%23f5f5f5' stroke='%23ddd'/%3E%3Ctext x='40' y='180' font-family='Arial' font-size='11' fill='%23333'>Item 1............................$50.00%3C/text%3E%3Ctext x='40' y='200' font-family='Arial' font-size='11' fill='%23333'>Item 2............................$75.00%3C/text%3E%3Ctext x='40' y='220' font-family='Arial' font-size='11' fill='%23333'>Item 3............................$25.00%3C/text%3E%3Cline x1='30' y1='320' x2='270' y2='320' stroke='%23333' stroke-width='2'/%3E%3Ctext x='30' y='345' font-family='Arial' font-size='14' font-weight='bold' fill='%23333'>Total: $150.00%3C/text%3E%3C/svg%3E"
+                        alt="Invoice Preview" class="invoice-img" id="invoiceImg">
                     <div class="zoom-controls">
                         <button class="zoom-btn">🔍</button>
                         <button class="zoom-btn">🔎</button>
@@ -645,7 +670,8 @@
             <div class="card review-panel">
                 <h3>Review Errors</h3>
                 <p class="review-text" id="reviewText">
-                    Review the details extracted by OCR from the document. Verify accuracy of invoice numbers, dates, supplier names, and line items before validation.
+                    Review the details extracted by OCR from the document. Verify accuracy of invoice numbers, dates,
+                    supplier names, and line items before validation.
                 </p>
             </div>
         </div>
@@ -758,10 +784,10 @@
             await delay(1500);
             await simulateValidation();
             await delay(2000);
-            
+
             demoRunning = false;
-            // Restart demo after a pause
-            setTimeout(runDemo, 3000);
+            // Restart demo after a pause - REMOVED to prevent repeated popups
+            // setTimeout(runDemo, 3000);
         }
 
         function delay(ms) {
@@ -784,17 +810,17 @@
 
             // Animate to upload zone
             animatedFile.style.transition = 'all 1.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
-            animatedFile.style.left = uploadRect.left + uploadRect.width/2 - 40 + 'px';
-            animatedFile.style.top = uploadRect.top + uploadRect.height/2 - 50 + 'px';
-            
+            animatedFile.style.left = uploadRect.left + uploadRect.width / 2 - 40 + 'px';
+            animatedFile.style.top = uploadRect.top + uploadRect.height / 2 - 50 + 'px';
+
             uploadZone.classList.add('drag-over');
 
             await delay(1500);
-            
+
             // File drops
             animatedFile.style.transform = 'scale(0.5)';
             animatedFile.style.opacity = '0';
-            
+
             await delay(300);
             uploadZone.classList.remove('drag-over');
         }
@@ -967,4 +993,5 @@
         }, 2000);
     </script>
 </body>
+
 </html>
